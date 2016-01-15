@@ -1,0 +1,84 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "GalaxyKickstarter\n\n\nGalaxyKickstarter is an \nAnsible\n playbook designed for installing, testing, deploying and \nmaintaining production-grade Galaxy instances.", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/#galaxykickstarter", 
+            "text": "GalaxyKickstarter is an  Ansible  playbook designed for installing, testing, deploying and \nmaintaining production-grade Galaxy instances.", 
+            "title": "GalaxyKickstarter"
+        }, 
+        {
+            "location": "/about/", 
+            "text": "GalaxyKickstarter\n\n\nGalaxyKickstarter is an Ansible playbook designed to help you get one or more production-ready\n \nGalaxy servers\n based on Ubuntu within minutes, and to maintain these servers.\n\n\nThe playbook has been tested on \n\n\n\n\nCloud Machines\n\n\nVagrant Boxes\n\n\nPhysical Servers \n\n\nDocker.\n\n\n\n\nGalaxyKickstarter has been developed at the \nARTbio platform\n and contains roles developed\nby the \nGalaxy team\n.\n\n\nList of roles included in this playbook\n\n\ngalaxy-extras role\n\n\ngalaxy-tools role\n\n\ngalaxy-os role\n\n\ngalaxy role", 
+            "title": "What is GalaxyKickstarter"
+        }, 
+        {
+            "location": "/about/#galaxykickstarter", 
+            "text": "GalaxyKickstarter is an Ansible playbook designed to help you get one or more production-ready\n  Galaxy servers  based on Ubuntu within minutes, and to maintain these servers.  The playbook has been tested on    Cloud Machines  Vagrant Boxes  Physical Servers   Docker.   GalaxyKickstarter has been developed at the  ARTbio platform  and contains roles developed\nby the  Galaxy team .", 
+            "title": "GalaxyKickstarter"
+        }, 
+        {
+            "location": "/about/#list-of-roles-included-in-this-playbook", 
+            "text": "galaxy-extras role  galaxy-tools role  galaxy-os role  galaxy role", 
+            "title": "List of roles included in this playbook"
+        }, 
+        {
+            "location": "/getting_started/", 
+            "text": "Getting Started\n\n\nGalaxyKickstarter is designed to be flexible and powerful, but for demonstration purposes we start a simple vagrant box \nthat runs this playbook. Following these instructions will not change the host system.\nMore advanced examples are shown in \nexamples\n.\n\n\nRequirements\n\n\nTo follow the examples \nansible\n, \nvagrant\n \nand \ngit\n need to be installed.\n\n\nGetting the playbook\n\n\nGalaxyKickstarter is hosted on \ngithub\n and makes use of submodules, so care\nneeds to be taken to also download the submodules. Cloning the repository for the first time can be done like this \n(note the \n--recursive\n):\n\n\ngit clone --recursive https://github.com/ARTbio/ansible-artimed.git\n\n\n\n\nThe playbook (here \ngalaxy.yml\n) should be in the ansible-artimed folder.\n\n\nls ansible-artimed/\nCONTRIBUTORS.md  docs  extra-files  galaxy.yml  group_vars  hosts  \nLICENSE.txt  mkdocs.yml  pre-commit.sh  README.md  roles  Vagrantfile\n\n\n\n\nRunning the playbook on a Virtual Machine\n\n\nThe Vagrantfile describes a Virtual Machine (VM) that is based on Ubuntu trusty.\n\n\nVAGRANTFILE_API_VERSION = \n2\n\n   Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|\n      config.vm.box = \nubuntu/trusty64\n\n      config.vm.network \nforwarded_port\n, guest: 80, host: 8080\n      config.vm.network \nforwarded_port\n, guest: 21, host: 2121\n\n      config.vm.provider \nvirtualbox\n do |v|\n         v.memory = 4096\n      end\n\n      config.vm.provision \nansible\n do |ansible|\n         ansible.extra_vars = {\n            ntp_server: \npool.ntp.org\n,\n            ansible_ssh_user: 'vagrant' \n         }\n         ansible.verbose = 'vvvv'\n         ansible.playbook = \ngalaxy.yml\n\n      end\n   end\n\n\n\n\nBy default, port 8080 will be forwarded to port 80, and port 2121 will be forwarded to port 21 (for FTP),\nand 4096 MB of memory will be attributed to the VM.\nEnter the playbook directory \ncd ansible-artimed\n and type \nvagrant up\n to download a VM image and run the \ngalaxy.yml\n playbook.\nThis will take a while. Once finished, you should find a running Galaxy Instance on http://localhost:8080 .\nIf you would like to see the internals of the VM, you can log into the machine by typing \nvagrant ssh\n.\n\n\nCleaning up\n\n\nThe VM image and various config files have been written to the \n.vagrant\n folder. Type \nvagrant stop\n to stop the running instance\nand \nvagrant destroy\n to remove the VM, and then delete the \n.vagrant\n folder.", 
+            "title": "Getting started"
+        }, 
+        {
+            "location": "/getting_started/#getting-started", 
+            "text": "GalaxyKickstarter is designed to be flexible and powerful, but for demonstration purposes we start a simple vagrant box \nthat runs this playbook. Following these instructions will not change the host system.\nMore advanced examples are shown in  examples .", 
+            "title": "Getting Started"
+        }, 
+        {
+            "location": "/getting_started/#requirements", 
+            "text": "To follow the examples  ansible ,  vagrant  \nand  git  need to be installed.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/getting_started/#getting-the-playbook", 
+            "text": "GalaxyKickstarter is hosted on  github  and makes use of submodules, so care\nneeds to be taken to also download the submodules. Cloning the repository for the first time can be done like this \n(note the  --recursive ):  git clone --recursive https://github.com/ARTbio/ansible-artimed.git  The playbook (here  galaxy.yml ) should be in the ansible-artimed folder.  ls ansible-artimed/\nCONTRIBUTORS.md  docs  extra-files  galaxy.yml  group_vars  hosts  \nLICENSE.txt  mkdocs.yml  pre-commit.sh  README.md  roles  Vagrantfile", 
+            "title": "Getting the playbook"
+        }, 
+        {
+            "location": "/getting_started/#running-the-playbook-on-a-virtual-machine", 
+            "text": "The Vagrantfile describes a Virtual Machine (VM) that is based on Ubuntu trusty.  VAGRANTFILE_API_VERSION =  2 \n   Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|\n      config.vm.box =  ubuntu/trusty64 \n      config.vm.network  forwarded_port , guest: 80, host: 8080\n      config.vm.network  forwarded_port , guest: 21, host: 2121\n\n      config.vm.provider  virtualbox  do |v|\n         v.memory = 4096\n      end\n\n      config.vm.provision  ansible  do |ansible|\n         ansible.extra_vars = {\n            ntp_server:  pool.ntp.org ,\n            ansible_ssh_user: 'vagrant' \n         }\n         ansible.verbose = 'vvvv'\n         ansible.playbook =  galaxy.yml \n      end\n   end  By default, port 8080 will be forwarded to port 80, and port 2121 will be forwarded to port 21 (for FTP),\nand 4096 MB of memory will be attributed to the VM.\nEnter the playbook directory  cd ansible-artimed  and type  vagrant up  to download a VM image and run the  galaxy.yml  playbook.\nThis will take a while. Once finished, you should find a running Galaxy Instance on http://localhost:8080 .\nIf you would like to see the internals of the VM, you can log into the machine by typing  vagrant ssh .", 
+            "title": "Running the playbook on a Virtual Machine"
+        }, 
+        {
+            "location": "/getting_started/#cleaning-up", 
+            "text": "The VM image and various config files have been written to the  .vagrant  folder. Type  vagrant stop  to stop the running instance\nand  vagrant destroy  to remove the VM, and then delete the  .vagrant  folder.", 
+            "title": "Cleaning up"
+        }, 
+        {
+            "location": "/customizations/", 
+            "text": "Customising the playbook\n\n\nWe strongly encourage users to read the \nansible inventory\n documentation first.\n\nThe playbook comes with an example inventory file \nhosts\n.\n\n\n[artimed]\nlocalhost ansible_ssh_user=\nroot\n ansible_ssh_private_key_file=\n~/.ssh/id_rsa\n\n[travis_bioblend]\nlocalhost ansible_connection=local\n[aws]\n# Put you aws IP and key here to make FTP work in the default VPC.\n# If you want further group-specific variables, put the host in these groups as well [e.g artimed].\n\n\n\n\n[artimed]\n, \n[travis_bioblend]\n and \n[aws]\n are predefined groups. Any host (here we only have localhost) that\nis added to one or multiple groups will have the corresponding group variables applied.\nGroup variables are defined in \ngroup_vars/[name of the group]\n and default variables are found in \n\n\ngroup_vars/all\n.\nAll variables defined in \ngroup_vars/all\n are overwritten in \ngroup_vars/[name of the group]\n.  \n\n\nFor instance the variable \nproftpd_nat_masquerade\n is set to \nfalse\n in \ngroup_vars/all\n, while hosts in the \n[aws]\n group\napply the \n[aws]\n group variables which set \nproftpd_nat_masquerade\n to true, so that hosts in the aws group will have\nthis aws-specific setting applied. Any combination of groups may be used.", 
+            "title": "Customizations"
+        }, 
+        {
+            "location": "/customizations/#customising-the-playbook", 
+            "text": "We strongly encourage users to read the  ansible inventory  documentation first. \nThe playbook comes with an example inventory file  hosts .  [artimed]\nlocalhost ansible_ssh_user= root  ansible_ssh_private_key_file= ~/.ssh/id_rsa \n[travis_bioblend]\nlocalhost ansible_connection=local\n[aws]\n# Put you aws IP and key here to make FTP work in the default VPC.\n# If you want further group-specific variables, put the host in these groups as well [e.g artimed].  [artimed] ,  [travis_bioblend]  and  [aws]  are predefined groups. Any host (here we only have localhost) that\nis added to one or multiple groups will have the corresponding group variables applied.\nGroup variables are defined in  group_vars/[name of the group]  and default variables are found in   group_vars/all .\nAll variables defined in  group_vars/all  are overwritten in  group_vars/[name of the group] .    For instance the variable  proftpd_nat_masquerade  is set to  false  in  group_vars/all , while hosts in the  [aws]  group\napply the  [aws]  group variables which set  proftpd_nat_masquerade  to true, so that hosts in the aws group will have\nthis aws-specific setting applied. Any combination of groups may be used.", 
+            "title": "Customising the playbook"
+        }, 
+        {
+            "location": "/examples/", 
+            "text": "", 
+            "title": "Examples"
+        }, 
+        {
+            "location": "/available_roles/", 
+            "text": "", 
+            "title": "Available roles"
+        }, 
+        {
+            "location": "/available_variables/", 
+            "text": "", 
+            "title": "Available variables"
+        }
+    ]
+}
