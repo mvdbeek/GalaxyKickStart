@@ -4,7 +4,7 @@
     
     <url>
      <loc>None/</loc>
-     <lastmod>2016-02-18</lastmod>
+     <lastmod>2016-02-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,7 +12,7 @@
     
     <url>
      <loc>None/about/</loc>
-     <lastmod>2016-02-18</lastmod>
+     <lastmod>2016-02-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -20,32 +20,38 @@
     
     <url>
      <loc>None/getting_started/</loc>
-     <lastmod>2016-02-18</lastmod>
+     <lastmod>2016-02-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
-        
     <url>
      <loc>None/customizations/</loc>
-     <lastmod>2016-02-18</lastmod>
+     <lastmod>2016-02-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
-    <url>
-     <loc>None/installing tools and workflows/</loc>
-     <lastmod>2016-02-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
     
 
     
+    <url>
+     <loc>None/installing tools and workflows/</loc>
+     <lastmod>2016-02-19</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+        
+    <url>
+     <loc>None/examples/remote machines/</loc>
+     <lastmod>2016-02-19</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
         
     <url>
      <loc>None/examples/docker/</loc>
-     <lastmod>2016-02-18</lastmod>
+     <lastmod>2016-02-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -54,7 +60,7 @@
     
     <url>
      <loc>None/available_roles/</loc>
-     <lastmod>2016-02-18</lastmod>
+     <lastmod>2016-02-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -62,7 +68,7 @@
     
     <url>
      <loc>None/available_variables/</loc>
-     <lastmod>2016-02-18</lastmod>
+     <lastmod>2016-02-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -70,7 +76,7 @@
     
     <url>
      <loc>None/editing_help/</loc>
-     <lastmod>2016-02-18</lastmod>
+     <lastmod>2016-02-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
     

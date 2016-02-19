@@ -12,7 +12,7 @@
         }, 
         {
             "location": "/about/", 
-            "text": "GalaxyKickstarter\n\n\nGalaxyKickstarter is an Ansible playbook designed to help you get one or more production-ready\n \nGalaxy servers\n based on Ubuntu within minutes, and to maintain these servers.\n\n\nOptionally, instances can be pre-loaded with tools and workflows.\n\n\nThe playbook has been tested on \n\n\n\n\nCloud Machines\n\n\nVagrant Boxes\n\n\nPhysical Servers \n\n\nDocker.\n\n\n\n\nGalaxyKickstarter has been developed at the \nARTbio platform\n and contains roles developed\nby the \nGalaxy team\n.\n\n\nList of roles included in this playbook\n\n\ngalaxy-extras role\n\n\ngalaxy-tools role\n\n\ngalaxy-os role\n\n\ngalaxy role", 
+            "text": "GalaxyKickstarter\n\n\nGalaxyKickstarter is an Ansible playbook designed to help you get one or more production-ready\n \nGalaxy servers\n based on Ubuntu within minutes, and to maintain these servers.\n\n\nOptionally, instances can be pre-loaded with tools and workflows.\n\n\nThe playbook has been tested on \n\n\n\n\nCloud Machines\n\n\nVagrant Boxes\n\n\nPhysical Servers \n\n\nDocker.\n\n\n\n\nGalaxyKickstarter has been developed at the \nARTbio platform\n and contains roles developed\nby the \nGalaxy team\n.\n\n\nList of roles included in this playbook\n\n\nansible-postgresql-objects\n\n\ngalaxy-extras role\n\n\ngalaxy-tools role\n\n\ngalaxy-os role\n\n\ngalaxy role", 
             "title": "What is GalaxyKickstarter"
         }, 
         {
@@ -22,7 +22,7 @@
         }, 
         {
             "location": "/about/#list-of-roles-included-in-this-playbook", 
-            "text": "galaxy-extras role  galaxy-tools role  galaxy-os role  galaxy role", 
+            "text": "ansible-postgresql-objects  galaxy-extras role  galaxy-tools role  galaxy-os role  galaxy role", 
             "title": "List of roles included in this playbook"
         }, 
         {
@@ -101,6 +101,16 @@
             "title": "Installing workflows"
         }, 
         {
+            "location": "/examples/remote machines/", 
+            "text": "Deploying galaxy-kickstart on remote machines.\n\n\n\n\nInside the repository you will find a hosts file.\n\nThis is an example inventory.\n\n\n[artimed]\nlocalhost ansible_ssh_user=\nroot\n ansible_ssh_private_key_file=\n~/.ssh/id_rsa\n\n...\n\n\n\n\nHere \n[artimed]\n is a group, that contains a machine called localhost.\nThe variables defined in \ngroup_vars/artimed\n will be applied to this host.\nAnsible will connect by ssh to this machine, using the ssh key in \n~/.ssh/id_rsa\n.\n\n\nIf you would like to run this playbook on a remote machine by ssh (currently needs to be a debian-type machine),\n\ncreate a new inventory, and change \nlocalhost\n to the IP address of that machine.\n\nansible_ssh_user=\nuser\n controls under which username to connect to this machine.\nThis user needs to have sudo rights.\n\n\nThen, run the plabook by typing:\n\n\nansible-playbook --inventory-file=\nyour_inventory\n galaxy.yml\n\n\n\n\nYou can put multiple machines in your inventory.\n\nIf you run the playbook a second time, the process will be much faster, since steps that have already been executed will be skipped.", 
+            "title": "Remote machines"
+        }, 
+        {
+            "location": "/examples/remote machines/#deploying-galaxy-kickstart-on-remote-machines", 
+            "text": "Inside the repository you will find a hosts file. \nThis is an example inventory.  [artimed]\nlocalhost ansible_ssh_user= root  ansible_ssh_private_key_file= ~/.ssh/id_rsa \n...  Here  [artimed]  is a group, that contains a machine called localhost.\nThe variables defined in  group_vars/artimed  will be applied to this host.\nAnsible will connect by ssh to this machine, using the ssh key in  ~/.ssh/id_rsa .  If you would like to run this playbook on a remote machine by ssh (currently needs to be a debian-type machine), \ncreate a new inventory, and change  localhost  to the IP address of that machine. ansible_ssh_user= user  controls under which username to connect to this machine.\nThis user needs to have sudo rights.  Then, run the plabook by typing:  ansible-playbook --inventory-file= your_inventory  galaxy.yml  You can put multiple machines in your inventory. \nIf you run the playbook a second time, the process will be much faster, since steps that have already been executed will be skipped.", 
+            "title": "Deploying galaxy-kickstart on remote machines."
+        }, 
+        {
             "location": "/examples/docker/", 
             "text": "Building and deploying galaxy-kickstart in docker\n\n\n\n\nRequirements\n\n\nYou need to have docker installed and configured for your user.\n\n\nThe repository comes with various Dockerfiles that can be used to configure a deployment using Docker,\nor you can start with a pre-built docker image.\n\n\nRunning images from the dockerhub\n\n\nYou can obtain a pre-built docker image from the dockerhub:\n\n\ndocker pull artbio/galaxy-kickstart-base\n\n\n\n\nStart the image and serve it on port 8080 of your local machine in the standard docker way:\n\n\nCID=`docker run -d -p 8080:80 artbio/galaxy-kickstart-base`\n\n\n\n\n-p 8080:80\n will forward requests to nginx inside the container running on port 80.\n\n\nRuntime changes to pre-built docker images\n\n\nIf you wish to reach the container on a subdirectory, add \n-e NGINX_GALAXY_LOCATION=\"/my-subdirectory\"\n to the docker call \nand galaxy will be served at \nhttp://127.0.0.1:8080/my-subdirectory\n.\n\n\nWe recommend changing the default admin user as well, so the command becomes:\n\n\nCID=`docker run -d -e NGINX_GALAXY_LOCATION=\n/my-subdirectory\n -e GALAXY_CONFIG_ADMIN_USERS=admin@artbio.fr -p 8080:80 artbio/galaxy-kickstart-base`\n\n\n\n\nCommit changed containers to new images\n\n\nAs with standard docker containers, you can change, tag and commit running containers when you have configured them to your liking:\nCommit the changes to my-new-image\n\n\ndocker commit $CID my-new-image\n\n\n\n\n\nStop and remove the original container:\n\n\ndocker stop $CID \n docker rm $CID\n\n\n\n\nStart the new container:\n\n\nCID=`docker run -d -e NGINX_GALAXY_LOCATION=\n/my-subdirectory\n -e GALAXY_CONFIG_ADMIN_USERS=admin@artbio.fr -p 8080:80 my-new-image`\n\n\n\n\nPersisting to disk\n\n\nAll changes made to the container are by default ephemeral; if you remove the container, the changes are gone.\nTo persist data (this includes the postgresql database, galaxy's config files and your user data), mount a Volume into\nthe containers /export folder.\nDue to the persistance mechanism (we use bind-mounts inside the container), you need to privilege the container.\nAssuming you would like to mount your local \n/data\n folder, run\n\n\nCID=`docker run -d --privileged -v /data:/export -p 8080:80 my-new-image`\n\n\n\n\nThis will run through the persistence tags of the galaxy.yml and export the required files to /export (now on your machine's /data).\nFrom the new location the files are being bind-mounted back into their original location.", 
             "title": "Docker"
@@ -137,7 +147,7 @@
         }, 
         {
             "location": "/available_roles/", 
-            "text": "", 
+            "text": "ansible-postgresql-objects\n\n\ngalaxy-extras role\n\n\ngalaxy-tools role\n\n\ngalaxy-os role\n\n\ngalaxy role", 
             "title": "Available roles"
         }, 
         {

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Docker - GalaxyKickstarter</title>
+  <title>Remote machines - GalaxyKickstarter</title>
   
 
   <link rel="shortcut icon" href="../../img/favicon.ico">
@@ -20,7 +20,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Docker";
+    var mkdocs_page_name = "Remote machines";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js"></script>
@@ -90,32 +90,22 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../remote machines/">Remote machines</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Remote machines</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#deploying-galaxy-kickstart-on-remote-machines">Deploying galaxy-kickstart on remote machines.</a></li>
+                
+            
+            </ul>
         
     </li>
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Docker</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#building-and-deploying-galaxy-kickstart-in-docker">Building and deploying galaxy-kickstart in docker</a></li>
-                
-                    <li><a class="toctree-l4" href="#requirements">Requirements</a></li>
-                
-                    <li><a class="toctree-l4" href="#running-images-from-the-dockerhub">Running images from the dockerhub</a></li>
-                
-                    <li><a class="toctree-l4" href="#runtime-changes-to-pre-built-docker-images">Runtime changes to pre-built docker images</a></li>
-                
-                    <li><a class="toctree-l4" href="#commit-changed-containers-to-new-images">Commit changed containers to new images</a></li>
-                
-                    <li><a class="toctree-l4" href="#persisting-to-disk">Persisting to disk</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../docker/">Docker</a>
         
     </li>
 
@@ -170,7 +160,7 @@
         
       
     
-    <li>Docker</li>
+    <li>Remote machines</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -180,55 +170,28 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="building-and-deploying-galaxy-kickstart-in-docker">Building and deploying galaxy-kickstart in docker</h1>
+                <h1 id="deploying-galaxy-kickstart-on-remote-machines">Deploying galaxy-kickstart on remote machines.</h1>
 <hr />
-<h2 id="requirements">Requirements</h2>
-<p>You need to have docker installed and configured for your user.</p>
-<p>The repository comes with various Dockerfiles that can be used to configure a deployment using Docker,
-or you can start with a pre-built docker image.</p>
-<h2 id="running-images-from-the-dockerhub">Running images from the dockerhub</h2>
-<p>You can obtain a pre-built docker image from the dockerhub:</p>
-<pre><code>docker pull artbio/galaxy-kickstart-base
+<p>Inside the repository you will find a hosts file.<br />
+This is an example inventory.</p>
+<pre><code>[artimed]
+localhost ansible_ssh_user=&quot;root&quot; ansible_ssh_private_key_file=&quot;~/.ssh/id_rsa&quot;
+...
 </code></pre>
 
-<p>Start the image and serve it on port 8080 of your local machine in the standard docker way:</p>
-<pre><code>CID=`docker run -d -p 8080:80 artbio/galaxy-kickstart-base`
+<p>Here <code>[artimed]</code> is a group, that contains a machine called localhost.
+The variables defined in <code>group_vars/artimed</code> will be applied to this host.
+Ansible will connect by ssh to this machine, using the ssh key in <code>~/.ssh/id_rsa</code>.</p>
+<p>If you would like to run this playbook on a remote machine by ssh (currently needs to be a debian-type machine),<br />
+create a new inventory, and change <code>localhost</code> to the IP address of that machine.
+<code>ansible_ssh_user=&lt;user&gt;</code> controls under which username to connect to this machine.
+This user needs to have sudo rights.</p>
+<p>Then, run the plabook by typing:</p>
+<pre><code>ansible-playbook --inventory-file=&lt;your_inventory&gt; galaxy.yml
 </code></pre>
 
-<p><code>-p 8080:80</code> will forward requests to nginx inside the container running on port 80.</p>
-<h2 id="runtime-changes-to-pre-built-docker-images">Runtime changes to pre-built docker images</h2>
-<p>If you wish to reach the container on a subdirectory, add <code>-e NGINX_GALAXY_LOCATION="/my-subdirectory"</code> to the docker call 
-and galaxy will be served at <code>http://127.0.0.1:8080/my-subdirectory</code>.</p>
-<p>We recommend changing the default admin user as well, so the command becomes:</p>
-<pre><code>CID=`docker run -d -e NGINX_GALAXY_LOCATION=&quot;/my-subdirectory&quot; -e GALAXY_CONFIG_ADMIN_USERS=admin@artbio.fr -p 8080:80 artbio/galaxy-kickstart-base`
-</code></pre>
-
-<h2 id="commit-changed-containers-to-new-images">Commit changed containers to new images</h2>
-<p>As with standard docker containers, you can change, tag and commit running containers when you have configured them to your liking:
-Commit the changes to my-new-image</p>
-<pre><code>docker commit $CID my-new-image
-
-</code></pre>
-
-<p>Stop and remove the original container:</p>
-<pre><code>docker stop $CID &amp;&amp; docker rm $CID
-</code></pre>
-
-<p>Start the new container:</p>
-<pre><code>CID=`docker run -d -e NGINX_GALAXY_LOCATION=&quot;/my-subdirectory&quot; -e GALAXY_CONFIG_ADMIN_USERS=admin@artbio.fr -p 8080:80 my-new-image`
-</code></pre>
-
-<h2 id="persisting-to-disk">Persisting to disk</h2>
-<p>All changes made to the container are by default ephemeral; if you remove the container, the changes are gone.
-To persist data (this includes the postgresql database, galaxy's config files and your user data), mount a Volume into
-the containers /export folder.
-Due to the persistance mechanism (we use bind-mounts inside the container), you need to privilege the container.
-Assuming you would like to mount your local <code>/data</code> folder, run</p>
-<pre><code>CID=`docker run -d --privileged -v /data:/export -p 8080:80 my-new-image`
-</code></pre>
-
-<p>This will run through the persistence tags of the galaxy.yml and export the required files to /export (now on your machine's /data).
-From the new location the files are being bind-mounted back into their original location.</p>
+<p>You can put multiple machines in your inventory.<br />
+If you run the playbook a second time, the process will be much faster, since steps that have already been executed will be skipped.</p>
               
             </div>
           </div>
@@ -236,10 +199,10 @@ From the new location the files are being bind-mounted back into their original 
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../available_roles/" class="btn btn-neutral float-right" title="Available roles"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../docker/" class="btn btn-neutral float-right" title="Docker"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../remote machines/" class="btn btn-neutral" title="Remote machines"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../installing tools and workflows/" class="btn btn-neutral" title="Installing tools and workflows"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -265,10 +228,10 @@ From the new location the files are being bind-mounted back into their original 
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../remote machines/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../../installing tools and workflows/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../../available_roles/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../docker/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
