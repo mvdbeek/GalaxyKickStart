@@ -3,7 +3,10 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
   
   <title>Customizations - GalaxyKickstarter</title>
   
@@ -21,6 +24,8 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Customizations";
+    var mkdocs_page_input_path = "customizations.md";
+    var mkdocs_page_url = "/customizations/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -101,19 +106,26 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../examples/remote machines/">Remote machines</a>
+        <a class="" href="../examples/docker/">Docker</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../examples/docker/">Docker</a>
+        <a class="" href="../examples/vagrant/">Vagrant</a>
         
     </li>
 
         
     </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../faq/">Frequently asked questions</a>
+        
+    </li>
 <li>
           
             <li>
@@ -170,7 +182,7 @@
             <div class="section">
               
                 <h1 id="customising-the-playbook">Customising the playbook</h1>
-<p>We strongly encourage users to read the <a href="https://docs.ansible.com/ansible/intro_inventory.html">ansible inventory</a> documentation first.  </p>
+<p>We strongly encourage users to read the <a href="https://docs.ansible.com/ansible/intro_inventory.html">ansible inventory</a> documentation first.</p>
 <p>Most settings should be editable without modifying the playbook directly,
 instead variables can be set in group_vars and host vars.</p>
 <p>The playbook comes with an example inventory file <code>hosts</code>.</p>
@@ -191,6 +203,18 @@ All variables defined in <code>group_vars/all</code> are overwritten in <code>gr
 <p>For instance the variable <code>proftpd_nat_masquerade</code> is set to <code>false</code> in <code>group_vars/all</code>, while hosts in the <code>[aws]</code> group
 apply the <code>[aws]</code> group variables which set <code>proftpd_nat_masquerade</code> to true, so that hosts in the aws group will have
 this aws-specific setting applied. Any combination of groups may be used.</p>
+<p>If you want to apply any of the changes you made to the variables you need to run the playbook again, making sure that
+the host you are targeting is in the right group. The simplest way to do so is to use an inventory file that only contains
+the group and the host you wish to target. If this is for example the group metavisitor, and you target the host localhost,
+your inventory file should look like this:</p>
+<pre><code>[metavisitor]
+localhost
+</code></pre>
+
+<p>You can then run the playbook as usual:</p>
+<pre><code>ansible-playbook --inventory-file=&lt;your_inventory_file&gt; galaxy.yml
+</code></pre>
+
 <h1 id="important-variables">Important variables</h1>
 <p>We aimed for this playbook to be reusable. We therefore made most variables configurable.
 The group_vars/all file contains the variables we have chosen as defaults. You may override them either in this file
@@ -254,7 +278,7 @@ about group variables</a> for details.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../installing tools and workflows/" class="btn btn-neutral float-right" title="Installing tools and workflows"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../installing tools and workflows/" class="btn btn-neutral float-right" title="Installing tools and workflows">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../getting_started/" class="btn btn-neutral" title="Getting started"><span class="icon icon-circle-arrow-left"></span> Previous</a>

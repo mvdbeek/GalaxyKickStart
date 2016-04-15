@@ -3,7 +3,10 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
   
   <title>Installing tools and workflows - GalaxyKickstarter</title>
   
@@ -21,6 +24,8 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Installing tools and workflows";
+    var mkdocs_page_input_path = "installing tools and workflows.md";
+    var mkdocs_page_url = "/installing tools and workflows/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -98,6 +103,9 @@
                 <li class="toctree-l3"><a href="#installing-workflows">Installing workflows</a></li>
                 
             
+                <li class="toctree-l3"><a href="#running-the-playbook">Running the playbook</a></li>
+                
+            
             </ul>
         
     </li>
@@ -110,19 +118,26 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../examples/remote machines/">Remote machines</a>
+        <a class="" href="../examples/docker/">Docker</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../examples/docker/">Docker</a>
+        <a class="" href="../examples/vagrant/">Vagrant</a>
         
     </li>
 
         
     </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../faq/">Frequently asked questions</a>
+        
+    </li>
 <li>
           
             <li>
@@ -236,6 +251,17 @@ galaxy_tools_workflows:
   - &quot;extra-files/metavisitor/Galaxy-Workflow-Metavisitor_Test_case_1-3_Guided.ga&quot;
   - &quot;extra-files/metavisitor/Galaxy-Workflow-Meta-visitor__test_case_Nora_virus,_REMAPPING.ga&quot;
 </code></pre>
+
+<h1 id="running-the-playbook">Running the playbook</h1>
+<p>As per usual, run the playbook with an inventory file that maps your target machine to the metavisitor group.
+If the target is localhost, your inventory file should look ike this:</p>
+<pre><code>[metavisitor]
+localhost
+</code></pre>
+
+<p>then run the playbook like so:</p>
+<pre><code>ansible-playbook --inventory-file=&lt;your_inventory_file&gt; galaxy.yml
+</code></pre>
               
             </div>
           </div>
@@ -243,7 +269,7 @@ galaxy_tools_workflows:
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../examples/remote machines/" class="btn btn-neutral float-right" title="Remote machines"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../examples/docker/" class="btn btn-neutral float-right" title="Docker">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../customizations/" class="btn btn-neutral" title="Customizations"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -275,7 +301,7 @@ galaxy_tools_workflows:
         <span><a href="../customizations/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../examples/remote machines/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../examples/docker/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
