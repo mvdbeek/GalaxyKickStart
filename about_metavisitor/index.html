@@ -8,7 +8,7 @@
   
   
   
-  <title>Editing the readme - GalaxyKickstarter</title>
+  <title>About metavisitor - GalaxyKickstarter</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -23,9 +23,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Editing the readme";
-    var mkdocs_page_input_path = "editing_help.md";
-    var mkdocs_page_url = "/editing_help/";
+    var mkdocs_page_name = "About metavisitor";
+    var mkdocs_page_input_path = "about_metavisitor.md";
+    var mkdocs_page_url = "/about_metavisitor/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -133,12 +133,8 @@
 <li>
           
             <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Editing the readme</a>
-        
-            <ul>
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../editing_help/">Editing the readme</a>
         
     </li>
 <li>
@@ -149,8 +145,15 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../about_metavisitor/">About metavisitor</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">About metavisitor</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#metavisitor">Metavisitor</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -193,8 +196,12 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Metavisitor &raquo;</li>
+        
+      
     
-    <li>Editing the readme</li>
+    <li>About metavisitor</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -204,29 +211,14 @@
           <div role="main">
             <div class="section">
               
-                <p>To view the help, type</p>
-<pre><code class="bash">mkdocs serve
-</code></pre>
-
-<p>This will serve the documentation on http://127.0.0.1:8000.</p>
-<p>To add new files, create a markdown document in docs/, and reference it in mkdocs.yml.<br />
-If you want to add a document called <code>editing_help.md</code> add the following line.</p>
-<pre><code> - Editing the readme: editing_help.md
-</code></pre>
-
-<p>so that <a href="https://github.com/ARTbio/ansible-artimed/blob/master/mkdocs.yml">mkdocs.yml</a> looks like this.</p>
-<pre><code>site_name: GalaxyKickstarter
-pages:
- - Home: index.md
- - What is GalaxyKickstarter: about.md
- - Getting started: getting_started.md
- - Customizations: customizations.md
- - Examples: examples.md
- - Available roles: available_roles.md
- - Available variables: available_variables.md
- - Editing the readme: editing_help.md
-theme: readthedocs
-</code></pre>
+                <h1 id="metavisitor">Metavisitor</h1>
+<p><a href="http://dx.doi.org/10.1101/048983">Metavisitor</a> is a user-friendly and adaptable software to provide biologists, clinical researchers and possibly diagnostic clinicians with the ability to robustly detect and reconstruct viral genomes from complex deep sequence datasets. A set of modular bioinformatic tools and workflows was implemented as the Metavisitor package in the Galaxy framework. Using the graphical Galaxy workflow editor, users with minimal computational skills can use existing Metavisitor workflows or adapt them to suit specific needs by adding or modifying analysis modules.</p>
+<p>Here we provide documentation on how to install and use a Galaxy server instance with pre-installed Metavisitor tools and workflows.</p>
+<ul>
+<li>Using GalaxyKickstarter: see <a href="../metavisitor_ansible/">Metavisitor with GalaxyKickstarter (Ansible)</a></li>
+<li>Using Docker: see <a href="../metavisitor_docker/">Metavitor with Docker</a></li>
+</ul>
+<p>Metavisitor has been developed at the <a href="http://artbio.fr">ARTbio platform</a> its tools and workflows are available in [GitHub] (https://github.com/ARTbio/tools-artbio) and in the [Galaxy main tool shed] (https://toolshed.g2.bx.psu.edu/).</p>
               
             </div>
           </div>
@@ -234,10 +226,10 @@ theme: readthedocs
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../about_metavisitor/" class="btn btn-neutral float-right" title="About metavisitor">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../metavisitor_ansible/" class="btn btn-neutral float-right" title="Installing with GalaxyKickstarter">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../available_variables/" class="btn btn-neutral" title="Available variables"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../editing_help/" class="btn btn-neutral" title="Editing the readme"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -263,10 +255,10 @@ theme: readthedocs
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../available_variables/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../editing_help/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../about_metavisitor/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../metavisitor_ansible/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

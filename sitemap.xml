@@ -89,4 +89,26 @@
     </url>
     
 
+    
+        
+    <url>
+     <loc>None/about_metavisitor/</loc>
+     <lastmod>2016-04-19</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/metavisitor_ansible/</loc>
+     <lastmod>2016-04-19</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/metavisitor_docker/</loc>
+     <lastmod>2016-04-19</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
 </urlset>
