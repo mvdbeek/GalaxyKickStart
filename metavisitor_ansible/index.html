@@ -273,6 +273,17 @@ For deploying Metavisitor, you need to edit this file so that it just contains</
 </code></pre>
 
 <p>where <code>192.54.201.126</code> is the ip address of the <code>Target machine</code> and <code>~/.ssh/id_rsa</code> the path to the private ssh key.</p>
+<h3 id="adapt-the-ansible-inventory-file-to-an-amazon-web-service-aws-virtual-machine">Adapt the ansible inventory file to an Amazon Web Service (AWS) virtual machine</h3>
+<p>In this specific case, add in the hosts inventory file:</p>
+<pre><code>[metavisitor]
+192.54.201.126 ansible_ssh_user=&quot;root&quot; ansible_ssh_private_key_file=&quot;~/.ssh/aws_private_key.pem&quot;
+
+[aws]
+192.54.201.126
+</code></pre>
+
+<p>In that case <code>aws_private_key.pem</code> is the private ssh key for interacting with aws instances, and the [aws] section will trigger additional actions for accessing the Metavisitor Galaxy instance in the Amazon cloud.</p>
+<p>Note also that port range 49152 - 65534 should be open for the AWS instance in order to allow ftp upload (set this range in the security group associated to the AWS instance)</p>
 <h2 id="adapt-the-group_varsall-file-for-persisting-data-if-needed">Adapt the group_vars/all file for persisting data, if needed.</h2>
 <p>In cases where your <code>Target machine</code> has volumes where you wish the Galaxy data to be persisted in, you have to edit the <code>ansible-artimed/group_vars/all</code> file, to indicate the path to this volume on the <code>Target machine</code>.</p>
 <p>If you don't understand the previous statement, no worries, just don't do anything and skip this step.</p>
