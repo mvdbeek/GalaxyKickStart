@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>Prepare Metavisitor Galaxy instance for analyses - GalaxyKickstarter</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Prepare Metavisitor Galaxy instance for analyses";
+    var mkdocs_page_input_path = "metavisitor_configure_references.md";
+    var mkdocs_page_url = "/metavisitor_configure_references/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> GalaxyKickstarter</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../about/">What is GalaxyKickstarter</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../getting_started/">Getting started</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../customizations/">Customizations</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../installing tools and workflows/">Installing tools and workflows</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Examples</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../examples/docker/">Docker</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../examples/vagrant/">Vagrant</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../faq/">Frequently asked questions</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../available_roles/">Available roles</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../available_variables/">Available variables</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../editing_help/">Editing the readme</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Metavisitor</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../about_metavisitor/">About metavisitor</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../metavisitor_ansible/">Installing with GalaxyKickstarter</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../metavisitor_docker/">Installing with Docker</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../metavisitor_access_control/">Access and Control Metavisitor Galaxy instance</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Prepare Metavisitor Galaxy instance for analyses</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#1-connect-to-your-metavisitor-galaxy-admin-account-with-your-web-browser">1. Connect to your Metavisitor Galaxy admin account with your web browser</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#2-import-reference-data-in-an-history-references">2. Import reference data in an history "References"</a></li>
+                
+                    <li><a class="toctree-l4" href="#a-preliminary-actions">a. Preliminary actions</a></li>
+                
+                    <li><a class="toctree-l4" href="#b-upload-nucleotide-vir1-fasta-file">b. Upload nucleotide vir1 fasta file</a></li>
+                
+                    <li><a class="toctree-l4" href="#c-upload-protein-vir1-fasta-file">c. Upload protein vir1 fasta file</a></li>
+                
+                    <li><a class="toctree-l4" href="#d-upload-the-drosophila-melanogaster-release-6-genome">d. Upload the Drosophila melanogaster release 6 genome</a></li>
+                
+                    <li><a class="toctree-l4" href="#e-upload-the-anopheles-gambiae-release-p4">e. Upload the Anopheles gambiae release P4</a></li>
+                
+                    <li><a class="toctree-l4" href="#f-upload-the-plasmodium-berghei-genome">f. Upload the Plasmodium berghei genome</a></li>
+                
+                    <li><a class="toctree-l4" href="#g-upload-the-homo-sapiens-release-grch38hg19">g. Upload the Homo sapiens release GRCh38/hg19</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#3-prepare-blast-databases">3. Prepare Blast databases</a></li>
+                
+                    <li><a class="toctree-l4" href="#a-nucleotide-vir1-blast-database">a. Nucleotide vir1 blast database</a></li>
+                
+                    <li><a class="toctree-l4" href="#b-protein-vir1-blast-database">b. Protein vir1 blast database</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#4-creating-galaxy-dbkey-and-fasta-references-accessible-to-tools-for-every-user">4. Creating Galaxy dbkey and fasta references accessible to tools for every user</a></li>
+                
+                    <li><a class="toctree-l4" href="#a-nucleotide-vir1">a. nucleotide vir1</a></li>
+                
+                    <li><a class="toctree-l4" href="#b-dm6">b. dm6</a></li>
+                
+                    <li><a class="toctree-l4" href="#c-agamp4">c. AgamP4</a></li>
+                
+                    <li><a class="toctree-l4" href="#d-hg19">d. hg19</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#5-creating-galaxy-bowtie-indexes-accessible-to-tools-for-every-user">5. Creating Galaxy bowtie indexes accessible to tools for every user</a></li>
+                
+                    <li><a class="toctree-l4" href="#a-vir-1-bowtie-index">a. vir 1 bowtie index</a></li>
+                
+                    <li><a class="toctree-l4" href="#b-dm6-bowtie-index">b. dm6 bowtie index</a></li>
+                
+                    <li><a class="toctree-l4" href="#c-agamp4-bowtie-index">c. AgamP4 bowtie index</a></li>
+                
+                    <li><a class="toctree-l4" href="#d-hg19-bowtie-index">d. hg19 bowtie index</a></li>
+                
+                    <li><a class="toctree-l4" href="#note-that-the-preparation-of-bowtie-indexes-can-be-long-several-hours-for-the-vir1-bowtie-index-for-instance">Note that the preparation of bowtie indexes can be long ! (several hours for the vir1 bowtie index for instance)</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#6-creating-galaxy-bowtie2-indexes-accessible-to-tools-for-every-user">6. Creating Galaxy bowtie2 indexes accessible to tools for every user</a></li>
+                
+                    <li><a class="toctree-l4" href="#a-vir-1-bowtie2-index">a. vir 1 bowtie2 index</a></li>
+                
+                    <li><a class="toctree-l4" href="#b-agamp4-bowtie2-index">b. AgamP4 bowtie2 index</a></li>
+                
+                    <li><a class="toctree-l4" href="#c-hg19-bowtie2-index">c. hg19 bowtie2 index</a></li>
+                
+                    <li><a class="toctree-l4" href="#note-that-the-preparation-of-bowtie2-indexes-can-be-long-too-several-hours-for-the-vir1-bowtie2-index-for-instance">Note that the preparation of bowtie2 indexes can be long too ! (several hours for the vir1 bowtie2 index for instance)</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../use_cases_input_data/">Prepare input data histories</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../use_case_1/">Use Cases 1-1 to 1-4</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">GalaxyKickstarter</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Metavisitor &raquo;</li>
+        
+      
+    
+    <li>Prepare Metavisitor Galaxy instance for analyses</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>Once you know how to access to your Metavisitor Galaxy instance with a web browser and are able to perform basic start/stop/restart operations, there is still some work needed to import and configure reference data (genomes) so that they are directly available to all instance users for running tools and workflows</p>
+<p>Here we provide the step-by-step description of what we <em>actually did ourselves</em> to prepare our Metavisitor instance before performing the analyses described here <a href="http://dx.doi.org/10.1101/048983">here</a>.</p>
+<h2 id="1-connect-to-your-metavisitor-galaxy-admin-account-with-your-web-browser">1. Connect to your Metavisitor Galaxy admin account with your web browser</h2>
+<h2 id="2-import-reference-data-in-an-history-references">2. Import reference data in an history "References"</h2>
+<p>At first, you need to import and prepare the reference datasets you will need for most of the Metavisitor analyses. As a Galaxy admin you will make latter some of these references directly accessible to the Galaxy tools, and/or accessible to any other users by putting them in a Galaxy public library.</p>
+<h4 id="a-preliminary-actions">a. Preliminary actions</h4>
+<p>click on the <code>Analyze Data</code> menu
+rename the <code>Unnamed history</code> to <code>References</code></p>
+<h4 id="b-upload-nucleotide-vir1-fasta-file">b. Upload nucleotide vir1 fasta file</h4>
+<pre><code>Click on the small arrow icon at the top of the tool bar (left handside of the Galaxy interface)
+In the open window, click on the Paste/Fetch data button
+Paste the URL https://ndownloader.figshare.com/files/4949173
+Click the start button.
+</code></pre>
+
+<p>A first dataset will show up in your history, first in grey (the job is starting), then yellow (the job - upload - is running), and eventually green (job is successfully done).</p>
+<p>When finished, rename the dataset 1 <code>https://ndownloader.figshare.com/files/4949173</code> to <code>nucleotide vir1</code> for clarity (using the small pencil icon).</p>
+<h4 id="c-upload-protein-vir1-fasta-file">c. Upload protein vir1 fasta file</h4>
+<p>Repeat the same operation as in <code>b.</code> using the url <code>https://ndownloader.figshare.com/files/4949170</code>.
+When finished, rename the dataset 2 <code>https://ndownloader.figshare.com/files/4949170</code> to <code>protein vir1</code> for clarity.</p>
+<h4 id="d-upload-the-drosophila-melanogaster-release-6-genome">d. Upload the Drosophila melanogaster release 6 genome</h4>
+<p>Repeat the same operation as in <code>b.</code> using the url <code>ftp://ftp.flybase.net/genomes/Drosophila_melanogaster/dmel_r6.10_FB2016_02/fasta/dmel-all-chromosome-r6.10.fasta.gz</code>.
+When finished, rename the dataset 3 <code>ftp://ftp.flybase.net/genomes/Drosophila_melanogaster/dmel_r6.10_FB2016_02/fasta/dmel-all-chromosome-r6.10.fasta.gz</code> to <code>dm6</code> for clarity.</p>
+<h4 id="e-upload-the-anopheles-gambiae-release-p4">e. Upload the Anopheles gambiae release P4</h4>
+<p>Repeat the same operation as in <code>b.</code> using the url <code>https://www.vectorbase.org/sites/default/files/ftp/downloads/Anopheles-gambiae-PEST_CHROMOSOMES_AgamP4.fa.gz</code>.
+When finished, rename the dataset 4 <code>https://www.vectorbase.org/sites/default/files/ftp/downloads/Anopheles-gambiae-PEST_CHROMOSOMES_AgamP4.fa.gz</code> to <code>AgamP4</code> for clarity.</p>
+<h4 id="f-upload-the-plasmodium-berghei-genome">f. Upload the Plasmodium berghei genome</h4>
+<p>Repeat the same operation as in <code>b.</code> using the url <code>ftp://ftp.ensemblgenomes.org/pub/release-28/protists/fasta/plasmodium_berghei/dna/Plasmodium_berghei.May_2010.28.dna_sm.genome.fa.gz</code>.
+When finished, rename the dataset 5 <code>ftp://ftp.ensemblgenomes.org/pub/release-28/protists/fasta/plasmodium_berghei/dna/Plasmodium_berghei.May_2010.28.dna_sm.genome.fa.gz</code> to <code>P. berghei</code> for clarity.</p>
+<h4 id="g-upload-the-homo-sapiens-release-grch38hg19">g. Upload the Homo sapiens release GRCh38/hg19</h4>
+<p>Repeat the same operation as in <code>b.</code> using the url <code>ftp://ftp.ensembl.org/pub/release-84/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz</code>.
+When finished, rename the dataset 6 <code>ftp://ftp.ensembl.org/pub/release-84/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz</code> to <code>hg19</code> for clarity.</p>
+<h2 id="3-prepare-blast-databases">3. Prepare Blast databases</h2>
+<h4 id="a-nucleotide-vir1-blast-database">a. Nucleotide vir1 blast database</h4>
+<p>Use the tool <code>NCBI BLAST+ makeblastdb</code>, check the radio button "nucleotide", select the dataset 1 (nucleotide vir1), give "nucleotide vir1 blastdb" as a "Title for BLAST database", leave the rest of the tool form unchanged and click "Execute" button.</p>
+<p>Rename the generated dataset 7 "nucleotide BLAST database from data 1" to "nucleotide vir1 blast database" for clarity</p>
+<h4 id="b-protein-vir1-blast-database">b. Protein vir1 blast database</h4>
+<p>Use the tool <code>NCBI BLAST+ makeblastdb</code>, check the radio button "protein", select the dataset 2 (protein vir1), give "protein vir1 blastdb" as a "Title for BLAST database", leave the rest of the tool form unchanged and click "Execute" button.</p>
+<p>Rename the generated dataset 8 "protein BLAST database from data 2" to "protein vir1 blast database" for clarity</p>
+<h2 id="4-creating-galaxy-dbkey-and-fasta-references-accessible-to-tools-for-every-user">4. Creating Galaxy dbkey and fasta references accessible to tools for every user</h2>
+<p>Here we are going in the <code>admin</code> panel, click <code>Local data</code> in the left menu and select the <code>Create DBKey and Reference Genome</code> in the "<strong>Run Data Manager Tools</strong>" (last line of the top section).</p>
+<h4 id="a-nucleotide-vir1">a. nucleotide vir1</h4>
+<p>in the newly open browser window (from the last click on <code>Create DBKey and Reference Genome</code>)
+- select "New" for <code>Use existing dbkey or create a new one</code>
+- enter "vir1" in the <code>dbkey</code>field
+- leave "Display name for dbkey", <code>Name of sequence</code> and <code>ID for sequence</code> empty !
+- select <code>history</code> in the <code>Choose the source for the reference genome</code> menu
+- select "nucleotide vir1" in the <code>FASTA File</code> menu
+- let <code>Sort by chromosome name</code> selected on <code>As is</code>
+- press the <code>execute</code>button !</p>
+<h4 id="b-dm6">b. dm6</h4>
+<p>Repeat the operation described in a., but this time</p>
+<ul>
+<li>put "dm6" for the <code>dbkey</code> field</li>
+<li>select "3: dm6" in the <code>FASTA File</code> menu</li>
+</ul>
+<p>Be sure that the <code>References</code> history is selected in the background, otherwise the uploaded genomes will not be available in this menu.</p>
+<h4 id="c-agamp4">c. AgamP4</h4>
+<p>Repeat the operation described in a., but this time</p>
+<ul>
+<li>put "AgamP4" for the <code>dbkey</code> field</li>
+<li>select "4: AgamP4" in the <code>FASTA File</code> menu</li>
+</ul>
+<p>Be sure that the <code>References</code> history is selected in the background, otherwise the uploaded genomes will not be available in this menu.</p>
+<h4 id="d-hg19">d. hg19</h4>
+<p>Repeat the operation described in a., but this time</p>
+<ul>
+<li>put "hg19" for the <code>dbkey</code> field</li>
+<li>select "6: hg19" in the <code>FASTA File</code> menu</li>
+</ul>
+<p>Be sure that the <code>References</code> history is selected in the background, otherwise the uploaded genomes will not be available in this menu.</p>
+<h2 id="5-creating-galaxy-bowtie-indexes-accessible-to-tools-for-every-user">5. Creating Galaxy bowtie indexes accessible to tools for every user</h2>
+<p>Now we are going to generate the bowtie indexes using another data manager tool.
+But before doing this, we have to perform a low level Galaxy admin task: restart the Galaxy server instance so that the dbkey and the fasta genomes that we've just created for the server are registered and seen by the tools.</p>
+<p>Depending on your skill level, you have the simple, dirty way:</p>
+<ul>
+<li>reboot the machine where the galaxy server is running !</li>
+</ul>
+<p>or the clean, freaking (for non-Geek normal biologists) way:</p>
+<ul>
+<li>Connect to the server where the Galaxy instance has been installed either through an ssh connection or using your local terminal. and type</li>
+</ul>
+<p><code>sudo supervisorctl restart galaxy:</code></p>
+<p>If everything went fine you should see in your terminal</p>
+<pre><code># supervisorctl restart galaxy:
+galaxy_web: stopped
+handler0: stopped
+handler1: stopped
+handler0: started
+handler1: started
+galaxy_web: started
+</code></pre>
+
+<p>freaking insn't it ?</p>
+<hr />
+<h4 id="a-vir-1-bowtie-index">a. vir 1 bowtie index</h4>
+<p>Now, Go back to your web browser and the <code>admin</code> panel, click again <code>Local data</code> in the left menu and  select this time the <code>Bowtie index - builder</code> in the "<strong>Run Data Manager Tools</strong>" (top section).</p>
+<p>select "vir1" in the <code>Source FASTA Sequence</code> menu of the Bowtie index builder tool form, leave the other options empty, and click execute.</p>
+<h4 id="b-dm6-bowtie-index">b. dm6 bowtie index</h4>
+<p>Go back to your web browser and the <code>admin</code> panel, click again <code>Local data</code> in the left menu and  select this time the <code>Bowtie index - builder</code> in the "<strong>Run Data Manager Tools</strong>" (top section).</p>
+<p>select "dm6" in the <code>Source FASTA Sequence</code> menu of the Bowtie index builder tool form, leave the other options empty, and click execute.</p>
+<h4 id="c-agamp4-bowtie-index">c. AgamP4 bowtie index</h4>
+<p>Go back to your web browser and the <code>admin</code> panel, click again <code>Local data</code> in the left menu and  select this time the <code>Bowtie index - builder</code> in the "<strong>Run Data Manager Tools</strong>" (top section).</p>
+<p>select "AgamP4" in the <code>Source FASTA Sequence</code> menu of the Bowtie index builder tool form, leave the other options empty, and click execute.</p>
+<h4 id="d-hg19-bowtie-index">d. hg19 bowtie index</h4>
+<p>Go back to your web browser and the <code>admin</code> panel, click again <code>Local data</code> in the left menu and  select this time the <code>Bowtie index - builder</code> in the "<strong>Run Data Manager Tools</strong>" (top section).</p>
+<p>select "hg19" in the <code>Source FASTA Sequence</code> menu of the Bowtie index builder tool form, leave the other options empty, and click execute.</p>
+<hr />
+<h4 id="note-that-the-preparation-of-bowtie-indexes-can-be-long-several-hours-for-the-vir1-bowtie-index-for-instance">Note that the preparation of bowtie indexes can be long ! (several hours for the vir1 bowtie index for instance)</h4>
+<p><strong> When bowtie indexes are ready (green in the <code>Data Manager History (automatically created)</code>) restart the Galaxy server instance as explained above, so that the bowtie indexes that we've just created for the server are registered and seen by the tools.</strong></p>
+<h2 id="6-creating-galaxy-bowtie2-indexes-accessible-to-tools-for-every-user">6. Creating Galaxy bowtie2 indexes accessible to tools for every user</h2>
+<p>Finally, we are going to generate the bowtie2 indexes using another data manager tool.
+If not done before, restart the Galaxy instance as explained above.</p>
+<hr />
+<h4 id="a-vir-1-bowtie2-index">a. vir 1 bowtie2 index</h4>
+<p>Now, Go back to your web browser and the <code>admin</code> panel, click again <code>Local data</code> in the left menu and  select this time the <code>Bowtie2 index - builder</code> in the "<strong>Run Data Manager Tools</strong>" (top section).</p>
+<p>select "vir1" in the <code>Source FASTA Sequence</code> menu of the Bowtie index builder tool form, leave the other options empty, and click execute.</p>
+<h4 id="b-agamp4-bowtie2-index">b. AgamP4 bowtie2 index</h4>
+<p>Go back to your web browser and the <code>admin</code> panel, click again <code>Local data</code> in the left menu and  select this time the <code>Bowtie2 index - builder</code> in the "<strong>Run Data Manager Tools</strong>" (top section).</p>
+<p>select "AgamP4" in the <code>Source FASTA Sequence</code> menu of the Bowtie index builder tool form, leave the other options empty, and click execute.</p>
+<h4 id="c-hg19-bowtie2-index">c. hg19 bowtie2 index</h4>
+<p>Go back to your web browser and the <code>admin</code> panel, click again <code>Local data</code> in the left menu and  select this time the <code>Bowtie2 index - builder</code> in the "<strong>Run Data Manager Tools</strong>" (top section).</p>
+<p>select "hg19" in the <code>Source FASTA Sequence</code> menu of the Bowtie index builder tool form, leave the other options empty, and click execute.</p>
+<hr />
+<h4 id="note-that-the-preparation-of-bowtie2-indexes-can-be-long-too-several-hours-for-the-vir1-bowtie2-index-for-instance">Note that the preparation of bowtie2 indexes can be long too ! (several hours for the vir1 bowtie2 index for instance)</h4>
+<p><strong> When bowtie2 indexes are ready (green in the <code>Data Manager History (automatically created)</code>) restart the Galaxy server instance as explained above, so that the bowtie indexes that we've just created for the server are registered and seen by the tools.</strong></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../use_cases_input_data/" class="btn btn-neutral float-right" title="Prepare input data histories">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../metavisitor_access_control/" class="btn btn-neutral" title="Access and Control Metavisitor Galaxy instance"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../metavisitor_access_control/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../use_cases_input_data/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

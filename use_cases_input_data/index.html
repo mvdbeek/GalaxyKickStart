@@ -8,7 +8,7 @@
   
   
   
-  <title>What is GalaxyKickstarter - GalaxyKickstarter</title>
+  <title>Prepare input data histories - GalaxyKickstarter</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -23,9 +23,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "What is GalaxyKickstarter";
-    var mkdocs_page_input_path = "about.md";
-    var mkdocs_page_url = "/about/";
+    var mkdocs_page_name = "Prepare input data histories";
+    var mkdocs_page_input_path = "use_cases_input_data.md";
+    var mkdocs_page_url = "/use_cases_input_data/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -62,17 +62,8 @@
 <li>
           
             <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">What is GalaxyKickstarter</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#galaxykickstarter">GalaxyKickstarter</a></li>
-                
-                    <li><a class="toctree-l4" href="#list-of-roles-included-in-this-playbook">List of roles included in this playbook</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../about/">What is GalaxyKickstarter</a>
         
     </li>
 <li>
@@ -189,8 +180,15 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../use_cases_input_data/">Prepare input data histories</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Prepare input data histories</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#history-with-input-data-for-use-cases-1-1-1-2-1-3-and-1-4">History with input data for Use Cases 1-1, 1-2, 1-3 and 1-4</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -226,8 +224,12 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Metavisitor &raquo;</li>
+        
+      
     
-    <li>What is GalaxyKickstarter</li>
+    <li>Prepare input data histories</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -237,25 +239,48 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="galaxykickstarter">GalaxyKickstarter</h1>
-<p>GalaxyKickstarter is an Ansible playbook designed to help you get one or more production-ready
- <a href="https://usegalaxy.org/">Galaxy servers</a> based on Ubuntu within minutes, and to maintain these servers.</p>
-<p>Optionally, instances can be pre-loaded with tools and workflows.</p>
-<p>The playbook has been tested on </p>
-<ul>
-<li>Cloud Machines</li>
-<li>Vagrant Boxes</li>
-<li>Physical Servers </li>
-<li>Docker.</li>
+                <p>We are now entering into real analyses using Metavisitor !
+In this section, we are going to create step by step Galaxy histories that contains the input data required to execute the analyses as described in the <a href="http://dx.doi.org/10.1101/048983">metavisitor article</a>. These analyses are presented as use cases. Thus let's start with the input data to run the Use Cases 1-1, 1-2, 1-3 and 1-4</p>
+<h1 id="history-with-input-data-for-use-cases-1-1-1-2-1-3-and-1-4">History with input data for Use Cases 1-1, 1-2, 1-3 and 1-4</h1>
+<ol>
+<li>Create a new history and rename it "Input data for Use Cases 1-1, 1-2, 1-3 and 1-4"</li>
+<li>import SRP013822 datasets<ul>
+<li>Use the tool <code>Extract reads in FASTQ/A format from NCBI SRA</code> and fill the SRR accession field with the first EBI SRA identifier <strong>SRR515090</strong></li>
+<li>repeat the exact same operation with the tool <code>Extract reads in FASTQ/A format from NCBI SRA</code> and the identifiers <strong>SRR513993, SRR513992, SRR513990, SRR513989, SRR513981, SRR513901</strong></li>
+<li>for the 7 datasets retrieved from EBI SRA, change the datatype <strong>fastq</strong> to <strong>fastqsanger</strong>:
+click on the pencil icon of the dataset, click the tab Datatype, and select fastqsanger in the New Type menu</li>
 </ul>
-<p>GalaxyKickstarter has been developed at the <a href="http://artbio.fr">ARTbio platform</a> and contains roles developed
-by the <a href="https://github.com/galaxyproject/">Galaxy team</a>.</p>
-<h2 id="list-of-roles-included-in-this-playbook">List of roles included in this playbook</h2>
-<p><a href="https://github.com/natefoo/ansible-postgresql-objects">ansible-postgresql-objects</a><br />
-<a href="https://github.com/galaxyproject/ansible-galaxy-extras">galaxy-extras role</a><br />
-<a href="https://github.com/galaxyproject/ansible-galaxy-tools">galaxy-tools role</a><br />
-<a href="https://github.com/galaxyproject/ansible-galaxy-os">galaxy-os role</a><br />
-<a href="https://github.com/galaxyproject/ansible-galaxy">galaxy role</a>  </p>
+</li>
+<li>
+<p>Create a dataset collection <strong>SRP013822</strong></p>
+<ul>
+<li>Click on the checked box icon at the top of history bar as indicated below</li>
+</ul>
+<p><img alt="checkbow" src="../images/check_datasets.png" /></p>
+<ul>
+<li>Select the 7 datasets</li>
+<li>Select <strong>Build Dataset List</strong> in the menu <strong>For all selected...</strong></li>
+</ul>
+<p><img alt="datasetlist" src="../images/dataset_list.png" /></p>
+<ul>
+<li>and type <strong>SRP013822</strong> in the Name field and click <code>Create list</code></li>
+<li>you can leave the checked datasets view by clicking again the check box in the history top menu</li>
+</ul>
+</li>
+<li>
+<p>copy the vir1 blast database that we have prepared earlier in the <a href="../metavisitor_configure_references/#3-prepare-blast-databases">Reference</a> history.</p>
+<ul>
+<li>To do so, click on the little wheel icon in the history top menu (in the history right bar).</li>
+</ul>
+<p><img alt="copydataset" src="../images/copydataset.png" /></p>
+<ul>
+<li>Select "Copy Datasets"</li>
+<li>In the open page, select "References" in the Source History menu, check the "nucleotide vir1 blast database" dataset; select "Input data for Use Case 1_1, ..."; and click the "Copy History Items".</li>
+<li>if you refresh the history, you will see the "nucleotide vir1 blast database" dataset showing up.</li>
+</ul>
+</li>
+</ol>
+<p>That is all for the moment. We will latter add datasets in the history <code>Input data for Use Cases 1-1, 1-2, 1-3 and 1-4</code>. However, these datasets do no exist yet: this will be produced by the Use Cases 1-1, 1-2, 1-3 workflows !</p>
               
             </div>
           </div>
@@ -263,10 +288,10 @@ by the <a href="https://github.com/galaxyproject/">Galaxy team</a>.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../getting_started/" class="btn btn-neutral float-right" title="Getting started">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../use_case_1/" class="btn btn-neutral float-right" title="Use Cases 1-1 to 1-4">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../metavisitor_configure_references/" class="btn btn-neutral" title="Prepare Metavisitor Galaxy instance for analyses"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -292,10 +317,10 @@ by the <a href="https://github.com/galaxyproject/">Galaxy team</a>.</p>
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../metavisitor_configure_references/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../getting_started/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../use_case_1/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
