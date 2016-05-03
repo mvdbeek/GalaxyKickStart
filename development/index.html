@@ -8,7 +8,7 @@
   
   
   
-  <title>Prepare input data histories - GalaxyKickstarter</title>
+  <title>Development - GalaxyKickstarter</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -23,9 +23,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Prepare input data histories";
-    var mkdocs_page_input_path = "use_cases_input_data.md";
-    var mkdocs_page_url = "/use_cases_input_data/";
+    var mkdocs_page_name = "Development";
+    var mkdocs_page_input_path = "development.md";
+    var mkdocs_page_url = "/development/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -180,15 +180,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Prepare input data histories</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#history-with-input-data-for-use-cases-1-1-1-2-1-3-and-1-4">History with input data for Use Cases 1-1, 1-2, 1-3 and 1-4</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../use_cases_input_data/">Prepare input data histories</a>
         
     </li>
 
@@ -204,8 +197,15 @@
 <li>
           
             <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../development/">Development</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Development</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#fixing-submodule-issues">Fixing submodule issues</a></li>
+                
+            
+            </ul>
         
     </li>
 <li>
@@ -231,12 +231,8 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
-        
-          <li>Metavisitor &raquo;</li>
-        
-      
     
-    <li>Prepare input data histories</li>
+    <li>Development</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -246,48 +242,43 @@
           <div role="main">
             <div class="section">
               
-                <p>We are now entering into real analyses using Metavisitor !
-In this section, we are going to create step by step Galaxy histories that contains the input data required to execute the analyses as described in the <a href="http://dx.doi.org/10.1101/048983">metavisitor article</a>. These analyses are presented as use cases. Thus let's start with the input data to run the Use Cases 1-1, 1-2, 1-3 and 1-4</p>
-<h1 id="history-with-input-data-for-use-cases-1-1-1-2-1-3-and-1-4">History with input data for Use Cases 1-1, 1-2, 1-3 and 1-4</h1>
-<ol>
-<li>Create a new history and rename it "Input data for Use Cases 1-1, 1-2, 1-3 and 1-4"</li>
-<li>import SRP013822 datasets<ul>
-<li>Use the tool <code>Extract reads in FASTQ/A format from NCBI SRA</code> and fill the SRR accession field with the first EBI SRA identifier <strong>SRR515090</strong></li>
-<li>repeat the exact same operation with the tool <code>Extract reads in FASTQ/A format from NCBI SRA</code> and the identifiers <strong>SRR513993, SRR513992, SRR513990, SRR513989, SRR513981, SRR513901</strong></li>
-<li>for the 7 datasets retrieved from EBI SRA, change the datatype <strong>fastq</strong> to <strong>fastqsanger</strong>:
-click on the pencil icon of the dataset, click the tab Datatype, and select fastqsanger in the New Type menu</li>
-</ul>
-</li>
-<li>
-<p>Create a dataset collection <strong>SRP013822</strong></p>
-<ul>
-<li>Click on the checked box icon at the top of history bar as indicated below</li>
-</ul>
-<p><img alt="checkbow" src="../images/check_datasets.png" /></p>
-<ul>
-<li>Select the 7 datasets</li>
-<li>Select <strong>Build Dataset List</strong> in the menu <strong>For all selected...</strong></li>
-</ul>
-<p><img alt="datasetlist" src="../images/dataset_list.png" /></p>
-<ul>
-<li>and type <strong>SRP013822</strong> in the Name field and click <code>Create list</code></li>
-<li>you can leave the checked datasets view by clicking again the check box in the history top menu</li>
-</ul>
-</li>
-<li>
-<p>copy the vir1 blast database that we have prepared earlier in the <a href="../metavisitor_configure_references/#3-prepare-blast-databases">Reference</a> history.</p>
-<ul>
-<li>To do so, click on the little wheel icon in the history top menu (in the history right bar).</li>
-</ul>
-<p><img alt="copydataset" src="../images/copydataset.png" /></p>
-<ul>
-<li>Select "Copy Datasets"</li>
-<li>In the open page, select "References" in the Source History menu, check the "nucleotide vir1 blast database" dataset; select "Input data for Use Case 1_1, ..."; and click the "Copy History Items".</li>
-<li>if you refresh the history, you will see the "nucleotide vir1 blast database" dataset showing up.</li>
-</ul>
-</li>
-</ol>
-<p>That is all for the moment. We will latter add datasets in the history <code>Input data for Use Cases 1-1, 1-2, 1-3 and 1-4</code>. However, these datasets do no exist yet: this will be produced by the Use Cases 1-1, 1-2, 1-3 workflows !</p>
+                <h2 id="fixing-submodule-issues">Fixing submodule issues</h2>
+<p>This project is using roles from different places, and these are included as git submodules. 
+In a development cycle it may occur that the url of a repo changes, or that we have removed certain commits (We aim to avoid this). 
+If at any point you find yourself in the situation where a git checkout of submodules does not work, you can follow this procedure: 
+(galaxyprojectdotorg.galaxy-extras as an example, replace this with the problematic role)</p>
+<p>Skip the git clone if you already cloned the repo.</p>
+<pre><code>git clone --recursive https://github.com/ARTbio/ansible-artimed.git
+cd ansible-artimed/
+</code></pre>
+
+<p>Enter the directory of the problematic submodule</p>
+<pre><code>cd roles/galaxyprojectdotorg.galaxy-extras/
+</code></pre>
+
+<p>Verify that you have the correct remote.
+You can find the correct remote in ansible-artimed/.gitmodules</p>
+<pre><code>git remote -v
+</code></pre>
+
+<p>If this is not the correct remote, change back to the ansible-artimed directory and do</p>
+<pre><code>git submodule sync
+</code></pre>
+
+<p>Get the latest changesets (change back to the submodule directory if you had to sync the submodules)</p>
+<pre><code>git fetch
+</code></pre>
+
+<pre><code>Check which branch you are on. You want to checkout the master branch.
+
+</code></pre>
+
+<p>git checkout master
+git add galaxyprojectdotorg.galaxy-extras
+git commit -m "Fix galaxy-extras submodule revision"
+```</p>
+<p>If you push this work back to github and you compare your repo with ansible-artimed/master, you should not see any changes
+that look like <code>Subproject commit 8265bdceaf0eca5ea4daeda06eb0d28583754ef6</code> (unless you have intentionally updated a submodule).</p>
               
             </div>
           </div>
@@ -295,10 +286,8 @@ click on the pencil icon of the dataset, click the tab Datatype, and select fast
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../use_case_1/" class="btn btn-neutral float-right" title="Use Cases 1-1 to 1-4">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-      
-        <a href="../metavisitor_configure_references/" class="btn btn-neutral" title="Prepare Metavisitor Galaxy instance for analyses"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../use_case_1/" class="btn btn-neutral" title="Use Cases 1-1 to 1-4"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -324,10 +313,8 @@ click on the pencil icon of the dataset, click the tab Datatype, and select fast
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../metavisitor_configure_references/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../use_case_1/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
-      
-        <span style="margin-left: 15px"><a href="../use_case_1/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
