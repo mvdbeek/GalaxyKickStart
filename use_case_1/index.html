@@ -198,10 +198,19 @@
                 
                     <li><a class="toctree-l4" href="#histories-for-use-cases-1-2-and-1-3">Histories for Use Cases 1-2 and 1-3</a></li>
                 
-                    <li><a class="toctree-l4" href="#history-for-use-case-1-4">History for Use Case 1-4</a></li>
+                    <li><a class="toctree-l4" href="#history-for-remapping-in-use-cases-1-123">History for remapping in Use Cases 1-1,2,3</a></li>
+                
+                    <li><a class="toctree-l4" href="#history-for-remapping-in-use-case-1-4">History for remapping in Use Case 1-4</a></li>
                 
             
             </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../use_case_2/">Use Cases 2-1 and 2-2</a>
         
     </li>
 
@@ -301,18 +310,46 @@ This trigger the workflow run. After a few seconds (may be take a while for comp
 - Remember to go back to the <code>Input data for Use Cases 1-1, 1-2, 1-3 and 1-4</code> history and be sure you are going to run the workflow from that history.
 - <strong>Select the appropriate workflow</strong> !
 - Remember to Check the "<strong>Send results to a new history</strong>" checkbox, rename the new history appropriately before pressing the "<strong>Run workflow</strong>" button</p>
-<h2 id="history-for-use-case-1-4">History for Use Case 1-4</h2>
-<p>Before running the workflow for Use Case 1-4, we need to collect datasets generated in Histories for Use Case 1-1, 1-2 and 1-3 and send them in our <code>Input data for Use Cases 1-1, 1-2, 1-3 and 1-4</code> history.</p>
+<h2 id="history-for-remapping-in-use-cases-1-123">History for remapping in Use Cases 1-1,2,3</h2>
+<p>Before running the workflow for remapping in Use Cases 1-1,2,3, we need to collect datasets generated in the histories for Use Case 1-1, 1-2 and 1-3 and send them in our <code>Input data for Use Cases 1-1, 1-2, 1-3 and 1-4</code> history.</p>
+<h4 id="update-the-input-data-for-use-cases-1-1-1-2-1-3-and-1-4-history">update the <code>Input data for Use Cases 1-1, 1-2, 1-3 and 1-4</code> history</h4>
 <p>This is because the purpose of the workflow for Use Case 1-4 is to remap the raw read sequencing datasets to the viral genomes generated in the previous histories as well as to 2 different Nora virus genomes deposited in Genbank (NC_007919.3 and JX220408).</p>
 <p>Thus, go back to the <code>Input data for Use Cases 1-1, 1-2, 1-3 and 1-4</code> history and</p>
 <ol>
 <li>Use the <code>Retrieve FASTA from NCBI</code> Metavisitor tool to retrieve the NC_007919.3 sequence.</li>
-<li>Use the <code>Regex Find And Replace</code> tool on the <em>Retrieve FASTA from NCBI (Nucleotide) with queryString 'NC_007919.3'</em> dataset as an input, and put <code>&gt;gi\|346421290\|ref\|NC_007919.3\|_Nora_virus,_complete_genome</code> as Find Regex parameter and <code>&gt;NC_007919.3</code> as Replacement parameter. This is just to change the header of the FASTA file and make it more readable.</li>
+<li>Use the <code>Regex Find And Replace</code> tool on the <em>Retrieve FASTA from NCBI (Nucleotide) with queryString 'NC_007919.3'</em> dataset as an input, and put <code>&gt;gi\|346421290\|ref\|NC_007919.3\|_Nora_virus,_complete_genome</code> as Find Regex parameter and <code>&gt;NC_007919.3</code> as Replacement parameter. This is just to change the header of the FASTA file and make it more readable. Rename the generated dataset NC_007919.3 for clarity.</li>
 <li>Use the <code>Retrieve FASTA from NCBI</code> Metavisitor tool to retrieve the JX220408 sequence.</li>
-<li>Use the <code>Regex Find And Replace</code> tool on the <em>Retrieve FASTA from NCBI (Nucleotide) with queryString 'JX220408'</em> dataset as an input, and put <code>&gt;gi\|402295620\|gb\|JX220408.1\|_Nora_virus_isolate_FR1,_complete_genome</code> as Find Regex parameter and <code>&gt;JX220408.1</code> as Replacement parameter.</li>
+<li>Use the <code>Regex Find And Replace</code> tool on the <em>Retrieve FASTA from NCBI (Nucleotide) with queryString 'JX220408'</em> dataset as an input, and put <code>&gt;gi\|402295620\|gb\|JX220408.1\|_Nora_virus_isolate_FR1,_complete_genome</code> as Find Regex parameter and <code>&gt;JX220408.1</code> as Replacement parameter. Rename the generated dataset JX220408.1 for clarity.</li>
 <li>click on the top wheel history icon, select <code>Copy Datasets</code>; select "History for Use Case 1-1" as a Source History, click on the last dataset of the history (Nora_MV_NC_007919.3_guided), select "Input data for Use Cases 1-1, 1-2..." as Destination History, and click "Copy History Items".</li>
 <li>Repeat the previous operation for History for Use Case 1-2, selecting the last "Nora_raw_reads_NC_007919.3_guided" dataset.</li>
 <li>and Repeat the previous operation for History for Use Case 1-3, selecting the last "Nora_Median-Norm-reads_NC_007919.3_guided" dataset.</li>
+<li>you may have to refresh your <code>Input data for Use Cases 1-1, 1-2, 1-3 and 1-4</code> history to reveal the three copied datasets</li>
+<li>The last step is to create a dataset collection with the 5 Nora virus genomes that you have now in your input data history: just click on the checkbox icon at the top of the history bar, select the 5 corresponding data sets (NC_007919.3, JX220408.1, Nora_MV_NC_007919.3_guided, Nora_raw_reads_NC_007919.3_guided and Nora_Median-Norm-reads_NC_007919.3_guided), click on the <code>For all selected...</code> button, select <code>Build Dataset List</code>, name this list "Nora virus genomes", and press the <code>Create list</code> button.</li>
+</ol>
+<p>We are done with the input data history update !</p>
+<h4 id="generate-the-history-for-remapping-in-use-cases-1-123">Generate the History for remapping in Use Cases 1-1,2,3</h4>
+<ol>
+<li>in the workflow top menu of Galaxy, select the <code>Metavisitor: Workflow for remapping in Use Cases 1-1,2,3</code> workflow and directly select the <code>run</code>option (you may also look at the workflow before by selection the <code>edit</code> option).</li>
+<li>Specify "SRP013822" for the step 1 option</li>
+<li>Specify "Nora virus genomes" for the step 2 option (you see now why we had to create a dataset collection)</li>
+<li>click at the bottom the checkbox <code>Send results to a new history</code></li>
+<li>Edit the field that shows up by typing in it: "<strong>History for remapping in Use Cases 1-1,2,3</strong>"</li>
+<li>execute the workflow by clicking the <code>Run workflow</code> button.</li>
+<li>After few seconds, you may follow the link to the new history running !</li>
+</ol>
+<h2 id="history-for-remapping-in-use-case-1-4">History for remapping in Use Case 1-4</h2>
+<p>This is a simple history to generate because basically, it is similar to the History for Use Case 1-1, but with a slightly modified (and simplified workflow).</p>
+<h4 id="navigate-back-again-to-your-base-history-input-data-for-use-cases-1-1-1-2-1-3-and-1-4">Navigate back again to your "base" history <code>Input data for Use Cases 1-1, 1-2, 1-3 and 1-4</code></h4>
+<p>Now the sequence of operations to be performed should be more familiar to you:</p>
+<ol>
+<li>Top menu <code>Workflow</code></li>
+<li>Select <code>Metavisitor: Workflow for Use Case 1-4</code> and the <code>run</code> option</li>
+<li>Step 1 (Input Dataset Collection), select the <code>SRP013822</code> option</li>
+<li>Step 2 (viral nucleotide BLAST database), select <code>nucleotide vir1 blast database</code> (forced option if everything went well - only one blast database is available in this input history)</li>
+<li>click at the bottom the checkbox <code>Send results to a new history</code></li>
+<li>Edit the field that shows up by typing in it: "<strong>History for Use Case 1-4</strong>"</li>
+<li>execute the workflow by clicking the <code>Run workflow</code> button.</li>
+<li>After few seconds, you may follow the link to the new "<strong>History for Use Case 1-4</strong>" running !</li>
 </ol>
               
             </div>
@@ -321,7 +358,7 @@ This trigger the workflow run. After a few seconds (may be take a while for comp
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../development/" class="btn btn-neutral float-right" title="Development">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../use_case_2/" class="btn btn-neutral float-right" title="Use Cases 2-1 and 2-2">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../use_cases_input_data/" class="btn btn-neutral" title="Prepare input data histories"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -353,7 +390,7 @@ This trigger the workflow run. After a few seconds (may be take a while for comp
         <span><a href="../use_cases_input_data/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../development/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../use_case_2/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
