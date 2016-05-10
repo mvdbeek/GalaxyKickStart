@@ -4,7 +4,7 @@
     
     <url>
      <loc>None/</loc>
-     <lastmod>2016-05-08</lastmod>
+     <lastmod>2016-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,7 +12,7 @@
     
     <url>
      <loc>None/about/</loc>
-     <lastmod>2016-05-08</lastmod>
+     <lastmod>2016-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -20,7 +20,7 @@
     
     <url>
      <loc>None/getting_started/</loc>
-     <lastmod>2016-05-08</lastmod>
+     <lastmod>2016-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -28,7 +28,7 @@
     
     <url>
      <loc>None/customizations/</loc>
-     <lastmod>2016-05-08</lastmod>
+     <lastmod>2016-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -36,7 +36,7 @@
     
     <url>
      <loc>None/installing tools and workflows/</loc>
-     <lastmod>2016-05-08</lastmod>
+     <lastmod>2016-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -45,13 +45,13 @@
         
     <url>
      <loc>None/examples/docker/</loc>
-     <lastmod>2016-05-08</lastmod>
+     <lastmod>2016-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/examples/vagrant/</loc>
-     <lastmod>2016-05-08</lastmod>
+     <lastmod>2016-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -60,7 +60,7 @@
     
     <url>
      <loc>None/faq/</loc>
-     <lastmod>2016-05-08</lastmod>
+     <lastmod>2016-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -68,7 +68,7 @@
     
     <url>
      <loc>None/available_roles/</loc>
-     <lastmod>2016-05-08</lastmod>
+     <lastmod>2016-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -76,7 +76,7 @@
     
     <url>
      <loc>None/available_variables/</loc>
-     <lastmod>2016-05-08</lastmod>
+     <lastmod>2016-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -84,7 +84,7 @@
     
     <url>
      <loc>None/editing_help/</loc>
-     <lastmod>2016-05-08</lastmod>
+     <lastmod>2016-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -93,61 +93,61 @@
         
     <url>
      <loc>None/about_metavisitor/</loc>
-     <lastmod>2016-05-08</lastmod>
+     <lastmod>2016-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/metavisitor_ansible/</loc>
-     <lastmod>2016-05-08</lastmod>
+     <lastmod>2016-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/metavisitor_docker/</loc>
-     <lastmod>2016-05-08</lastmod>
+     <lastmod>2016-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/metavisitor_access_control/</loc>
-     <lastmod>2016-05-08</lastmod>
+     <lastmod>2016-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/metavisitor_configure_references/</loc>
-     <lastmod>2016-05-08</lastmod>
+     <lastmod>2016-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/use_cases_input_data/</loc>
-     <lastmod>2016-05-08</lastmod>
+     <lastmod>2016-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/use_case_1/</loc>
-     <lastmod>2016-05-08</lastmod>
+     <lastmod>2016-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/use_case_2/</loc>
-     <lastmod>2016-05-08</lastmod>
+     <lastmod>2016-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/use_case_3-1/</loc>
-     <lastmod>2016-05-08</lastmod>
+     <lastmod>2016-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/use_case_3-2/</loc>
-     <lastmod>2016-05-08</lastmod>
+     <lastmod>2016-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -156,7 +156,7 @@
     
     <url>
      <loc>None/development/</loc>
-     <lastmod>2016-05-08</lastmod>
+     <lastmod>2016-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
