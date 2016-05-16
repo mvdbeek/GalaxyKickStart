@@ -207,6 +207,8 @@
                 
                     <li><a class="toctree-l4" href="#history-for-use-case-2-2">History for Use Case 2-2</a></li>
                 
+                    <li><a class="toctree-l4" href="#re-mapping-of-the-small-rna-reads-erp012577-to-the-ancv-genome-ku169878">Re-mapping of the small RNA reads (ERP012577) to the AnCV genome (KU169878).</a></li>
+                
             
             </ul>
         
@@ -339,8 +341,34 @@
 <li>Be careful at selecting <code>long read RNAseq datasets</code> for the step 1 (Input Dataset Collection)</li>
 <li>For the step 2, the option <code>protein vir1 blast database</code> is forced, because the workflow is expecting of protein blast database for this step and only one dataset with this datatype is available in the history</li>
 <li>Click the <code>Send results to a new history</code> checkbox and rename the history to "History for Use Case 2-1".</li>
-<li>Run Workflow !</li>
+<li>Run Workflow.</li>
 </ol>
+<h2 id="re-mapping-of-the-small-rna-reads-erp012577-to-the-ancv-genome-ku169878">Re-mapping of the small RNA reads (ERP012577) to the AnCV genome (KU169878).</h2>
+<p>The previous workflow allowed to assemble a large contig of 8919 nt which significantly matched structural and non-structural polyproteins of Drosophila C Virus and Cricket Paralysis Virus in blastx alignments (see the dataset <code>blast analysis, by subjects</code> of the history). This large contig corresponds to the genome of a new Anopheles C Virus deposited to the NCBI nucleotide database under accession number KU169878 (see the <a href="http://dx.doi.org/10.1101/048983">companion Metavisitor article</a> and <a href="http://dx.doi.org/10.1371/journal.pone.0153881">Carissimo et al</a>).</p>
+<p>Here, we are going to perform manually a few steps, before using another workflow in the history 2-2 to remap the ERP012577 small RNA reads to the AnCV genome.</p>
+<ol>
+<li>Look at the <code>blast analysis, by subjects</code> dataset and copy the name of the 8919 nt contig that aligned to DCV and CrPV sequences. It is noteworthy that this name may vary from one Oase run to another because the Oases algorithm is not totally deterministic. In the <a href="http://dx.doi.org/10.1101/048983">companion Metavisitor article</a>, this name was Locus_69_Transcript_1/1_Confidence_0.000_Length_8919.<ul>
+<li>Copy this name, find the tool <code>Pick Fasta sequences with header satisfying a query string</code> in the Galaxy tool bar, and paste this name in the field <code>Select sequences with this string in their header</code> of the tool form. Select the dataset <code>Oases_optimiser on data 20: Denovo assembled transcripts</code> as a source file, and run the tool.</li>
+</ul>
+</li>
+<li>
+<p>Now, we are going to change the header of the previously extracted fasta sequence using the tool <code>Regex Find And Replace</code>.</p>
+<ul>
+<li>Select the previous dataset <code>Pick Fasta sequences on data 21 including 'Locus_69_Transcript_1/1_Confidence_0.000_Length_8919' in header</code> as input dataset for this tool. Click on <code>+ Insert Check</code>. Use <code>Locus_69_Transcript_1/1_Confidence_0.000_Length_8919</code> as <em>Find Regex</em> and <code>Anopheles_C_Virus|KU169878</code> as <em>Replacement</em>. Execute the tool. Look at the resulting dataset.</li>
+</ul>
+</li>
+<li>
+<p>Copy the dataset collection <code>Small RNA reads ERP012577</code> from the history <code>Input data for Use Cases 2-1 and 2-2</code> into the <em>current</em> history <code>Use Case 2-2</code>. You may have the refresh the history bar to see this collection and the attached datasets popping up.</p>
+</li>
+</ol>
+<p>We are now ready to run the workflow.</p>
+<hr />
+<ol>
+<li>In the workflow menu, pick up the workflow <code>Metavisitor: Workflow for remapping in Use Cases 2-1,2</code> and select the <code>run</code> option.</li>
+<li>In the workflow form, ensure that <code>Small RNA reads ERP012577</code> are selected for the Step 1 and <code>Regex Find And Replace on data 28</code> is selected for the step 2 (this should be the case if you followed the instructions).</li>
+<li>This time, <em>do not</em> check the box <code>Send results to a new history</code> and directly click the <code>Run workflow</code>button.</li>
+</ol>
+<p>This workflow will provide you with a graphical view of ERP012577 small RNA mapping to the AnCV genome.</p>
               
             </div>
           </div>

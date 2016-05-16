@@ -339,7 +339,7 @@ For deploying Metavisitor, you need to edit this file so that it just contains</
 <h3 id="adapt-the-ansible-inventory-file-to-an-amazon-web-service-aws-virtual-machine">Adapt the ansible inventory file to an Amazon Web Service (AWS) virtual machine</h3>
 <p>In this specific case, add in the hosts inventory file:</p>
 <pre><code>[metavisitor]
-192.54.201.126 ansible_ssh_user=&quot;root&quot; ansible_ssh_private_key_file=&quot;~/.ssh/aws_private_key.pem&quot;
+192.54.201.126 ansible_ssh_user=&quot;ubuntu&quot; ansible_ssh_private_key_file=&quot;~/.ssh/aws_private_key.pem&quot;
 
 [aws]
 192.54.201.126
