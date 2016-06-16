@@ -8,7 +8,7 @@
   
   
   
-  <title>Access and Control Metavisitor Galaxy instance - GalaxyKickstarter</title>
+  <title>Access and Control Metavisitor Galaxy instance - GalaxyKickStart</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -43,7 +43,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> GalaxyKickstarter</a>
+        <a href=".." class="icon icon-home"> GalaxyKickStart</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -63,7 +63,7 @@
           
             <li>
     <li class="toctree-l1 ">
-        <a class="" href="../about/">What is GalaxyKickstarter</a>
+        <a class="" href="../about/">What is GalaxyKickStart</a>
         
     </li>
 <li>
@@ -153,7 +153,7 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../metavisitor_ansible/">Installing with GalaxyKickstarter</a>
+        <a class="" href="../metavisitor_ansible/">Installing with GalaxyKickStart</a>
         
     </li>
 
@@ -179,7 +179,7 @@
             
                 <li class="toctree-l3"><a href="#basic-admin-operation-restart-the-metavisitor-galaxy-instance">Basic admin operation: restart the Metavisitor Galaxy instance</a></li>
                 
-                    <li><a class="toctree-l4" href="#restart-metavisitor-galaxy-instance-deployed-with-galaxykickstarter">restart Metavisitor Galaxy instance deployed with Galaxykickstarter</a></li>
+                    <li><a class="toctree-l4" href="#restart-metavisitor-galaxy-instance-deployed-with-galaxykickstart">restart Metavisitor Galaxy instance deployed with GalaxyKickStart</a></li>
                 
                     <li><a class="toctree-l4" href="#restart-metavisitor-galaxy-instance-deployed-with-docker">restart Metavisitor Galaxy instance deployed with docker</a></li>
                 
@@ -258,7 +258,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">GalaxyKickstarter</a>
+        <a href="..">GalaxyKickStart</a>
       </nav>
 
       
@@ -284,11 +284,11 @@
           <div role="main">
             <div class="section">
               
-                <p>When you are done with the installation of your own Metavisitor Galaxy instance installation using either <a href="../metavisitor_ansible/">Galaxykickstarter</a> or <a href="../metavisitor_docker">docker</a>, there are a few basic things to know for web access and basic server admin operations</p>
+                <p>When you are done with the installation of your own Metavisitor Galaxy instance installation using either <a href="../metavisitor_ansible/">GalaxyKickStart</a> or <a href="../metavisitor_docker">docker</a>, there are a few basic things to know for web access and basic server admin operations</p>
 <h2 id="1-connect-web-frontpage-of-your-metavisitor-galaxy">1. Connect web frontpage of your Metavisitor Galaxy</h2>
 <p>We assume that you know the IP address to reach the Metavisitor Galaxy webserver:</p>
 <ul>
-<li>if you used <a href="../metavisitor_ansible/#adapt-the-ansible-inventory-file">Galaxykickstarter</a>, you had to indicate this host IP in your hosts inventory file.</li>
+<li>if you used <a href="../metavisitor_ansible/#adapt-the-ansible-inventory-file">GalaxyKickStart</a>, you had to indicate this host IP in your hosts inventory file.</li>
 <li>if you used <a href="../metavisitor_docker">docker</a>, you had to connect to the host machine with the appropriate IP address.</li>
 </ul>
 <p>Thus, to access Metavisitor Galaxy webserver, just type this IP address in your web browser.</p>
@@ -307,10 +307,10 @@
 <p>And click the <code>Change your password</code> item in the User preferences.</p>
 <h2 id="basic-admin-operation-restart-the-metavisitor-galaxy-instance">Basic admin operation: restart the Metavisitor Galaxy instance</h2>
 <p>As we will see in the <a href="../metavisitor_configure_references/">next chapter</a>, installations of reference genomes or additional tools in the Galaxy Metavisitor instance imply a Galaxy restart for completion. Here is how to do it.</p>
-<h4 id="restart-metavisitor-galaxy-instance-deployed-with-galaxykickstarter">restart Metavisitor Galaxy instance deployed with <a href="../metavisitor_ansible/">Galaxykickstarter</a></h4>
+<h4 id="restart-metavisitor-galaxy-instance-deployed-with-galaxykickstart">restart Metavisitor Galaxy instance deployed with <a href="../metavisitor_ansible/">GalaxyKickStart</a></h4>
 <ul>
 <li>
-<p>Connect to the server where the Galaxy instance has been installed either through the ssh connection you have used with <a href="../metavisitor_ansible/">Galaxykickstarter</a></p>
+<p>Connect to the server where the Galaxy instance has been installed either through the ssh connection you have used with <a href="../metavisitor_ansible/">GalaxyKickStart</a></p>
 </li>
 <li>
 <p>in your terminal, type <code>sudo supervisorctl restart galaxy:</code></p>
@@ -330,7 +330,7 @@ galaxy_web: started
 <h4 id="restart-metavisitor-galaxy-instance-deployed-with-docker">restart Metavisitor Galaxy instance deployed with <a href="../metavisitor_docker">docker</a></h4>
 <ul>
 <li>
-<p>Connect to the server where the Galaxy instance has been installed either through the ssh connection you have used with <a href="../metavisitor_ansible/">Galaxykickstarter</a></p>
+<p>Connect to the server where the Galaxy instance has been installed either through the ssh connection you have used with <a href="../metavisitor_ansible/">GalaxyKickStart</a></p>
 </li>
 <li>
 <p>connect to you docker host using ssh</p>

@@ -8,7 +8,7 @@
   
   
   
-  <title>Installing with GalaxyKickstarter - GalaxyKickstarter</title>
+  <title>Installing with GalaxyKickStart - GalaxyKickStart</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -23,7 +23,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Installing with GalaxyKickstarter";
+    var mkdocs_page_name = "Installing with GalaxyKickStart";
     var mkdocs_page_input_path = "metavisitor_ansible.md";
     var mkdocs_page_url = "/metavisitor_ansible/";
   </script>
@@ -43,7 +43,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> GalaxyKickstarter</a>
+        <a href=".." class="icon icon-home"> GalaxyKickStart</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -63,7 +63,7 @@
           
             <li>
     <li class="toctree-l1 ">
-        <a class="" href="../about/">What is GalaxyKickstarter</a>
+        <a class="" href="../about/">What is GalaxyKickStart</a>
         
     </li>
 <li>
@@ -153,11 +153,11 @@
         
             
     <li class="toctree-l1 current">
-        <a class="current" href="./">Installing with GalaxyKickstarter</a>
+        <a class="current" href="./">Installing with GalaxyKickStart</a>
         
             <ul>
             
-                <li class="toctree-l3"><a href="#installing-metavisitor-with-galaxykickstarter-and-ansible">Installing Metavisitor with GalaxyKickstarter and Ansible</a></li>
+                <li class="toctree-l3"><a href="#installing-metavisitor-with-galaxykickstart-and-ansible">Installing Metavisitor with GalaxyKickStart and Ansible</a></li>
                 
             
                 <li class="toctree-l3"><a href="#requirements">Requirements</a></li>
@@ -267,7 +267,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">GalaxyKickstarter</a>
+        <a href="..">GalaxyKickStart</a>
       </nav>
 
       
@@ -283,7 +283,7 @@
         
       
     
-    <li>Installing with GalaxyKickstarter</li>
+    <li>Installing with GalaxyKickStart</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -293,7 +293,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="installing-metavisitor-with-galaxykickstarter-and-ansible">Installing Metavisitor with GalaxyKickstarter and Ansible</h1>
+                <h1 id="installing-metavisitor-with-galaxykickstart-and-ansible">Installing Metavisitor with GalaxyKickStart and Ansible</h1>
 <hr />
 <p>Here, a <code>Deployment Machine</code> will install a Metavisitor Galaxy server on <code>Target Machine</code>. Note that <code>Deployment Machine</code> and <code>Target Machine</code> can both be local or remote machines, and that they can be the same machine.</p>
 <h1 id="requirements">Requirements</h1>
@@ -304,12 +304,12 @@
 </ul>
 <h1 id="getting-the-ansible-playbook">Getting the ansible playbook</h1>
 <hr />
-<p>This is done on the <code>Deployment Machine</code> by cloning the <a href="https://github.com/ARTbio/ansible-artimed.git">GalaxyKickstarter (ansible-artimed) repository</a> hosted by <a href="https://github.com/ARTbio">the ARTbio organization</a>:</p>
+<p>This is done on the <code>Deployment Machine</code> by cloning the <a href="https://github.com/ARTbio/ansible-artimed.git">GalaxyKickStart (ansible-artimed) repository</a> hosted by <a href="https://github.com/ARTbio">the ARTbio organization</a>:</p>
 <p>In your terminal, type:</p>
 <pre><code>git clone --recursive https://github.com/ARTbio/ansible-artimed.git
 </code></pre>
 
-<p>Importantly, GalaxyKickstarter makes use of submodules, so care
+<p>Importantly, GalaxyKickStart makes use of submodules, so care
 needs to be taken to also download these submodules. This is why <code>--recursive</code> is included in the git command line.</p>
 <p>At completion of the git cloning, you will have a new <code>ansible-artimed</code> folder, which contains everything need for deployment with ansible, including the playbook file (here <code>galaxy.yml</code>). You can verify this by typing in terminal:</p>
 <p><code>ls -la ansible-artimed</code></p>
@@ -378,7 +378,7 @@ galaxy_persistent_directory: /export # for IFB it's /root/mydisk, by default, /e
 <p>By default the admin login/password is <code>admin@galaxy.org</code> / <code>admin</code>. You should change the password for safety.</p>
 <h1 id="re-deploying-metavisitor-galaxy-on-the-target-machine">Re-deploying Metavisitor Galaxy on the <code>Target Machine</code></h1>
 <hr />
-<p>If you are experimented in using ansible, you may customize your Metavisitor Galaxy instance deployed with GalaxyKickstarter by editing the content of <code>ansible-artimed</code>.</p>
+<p>If you are experimented in using ansible, you may customize your Metavisitor Galaxy instance deployed with GalaxyKickStart by editing the content of <code>ansible-artimed</code>.</p>
 <p>In that case, when your changes are done, just run again the command</p>
 <pre><code>ansible-playbook --inventory-file=hosts galaxy.yml
 </code></pre>
