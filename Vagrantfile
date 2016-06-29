@@ -8,12 +8,4 @@ VAGRANTFILE_API_VERSION = "2"
          v.memory = 4096
       end
 
-      config.vm.provision "ansible" do |ansible|
-         ansible.extra_vars = {
-            ntp_server: "pool.ntp.org",
-            ansible_ssh_user: 'vagrant' 
-         }
-         ansible.verbose = 'vvvv'
-         ansible.playbook = "galaxy.yml"
-      end
    end
