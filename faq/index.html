@@ -117,6 +117,9 @@
         
             <ul>
             
+                <li class="toctree-l3"><a href="#why-does-the-playbook-fail">Why does the playbook fail?</a></li>
+                
+            
                 <li class="toctree-l3"><a href="#what-is-the-username-and-password-of-the-galaxy-admin-account">What is the username and password of the galaxy admin account ?</a></li>
                 
             
@@ -270,7 +273,13 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="what-is-the-username-and-password-of-the-galaxy-admin-account">What is the username and password of the galaxy admin account ?</h2>
+                <h2 id="why-does-the-playbook-fail">Why does the playbook fail?</h2>
+<p>Make sure that you are on ansible version &gt;=2.1.
+You can check your ansible version by typing:</p>
+<pre><code>ansible --version
+</code></pre>
+
+<h2 id="what-is-the-username-and-password-of-the-galaxy-admin-account">What is the username and password of the galaxy admin account ?</h2>
 <p>Username and password of the galaxy account are controlled by the variables <code>galaxy_admin</code> and <code>galaxy_admin_pw</code> and
 default to <code>admin@galaxy.org</code> and <code>admin</code> (Defaults are defined in group_vars/all). This should be changed in the group or host variables for the host you are working on.
 If you have a host in the <code>mygroup</code> group, you can edit group_vars/my_group and set</p>

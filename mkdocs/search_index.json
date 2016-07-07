@@ -12,13 +12,18 @@
         }, 
         {
             "location": "/about/", 
-            "text": "GalaxyKickStart\n\n\nGalaxyKickStart is an Ansible playbook designed to help you get one or more production-ready\n \nGalaxy servers\n based on Ubuntu within minutes, and to maintain these servers.\n\n\nOptionally, instances can be pre-loaded with tools and workflows.\n\n\nThe playbook has been tested on \n\n\n\n\nCloud Machines\n\n\nVagrant Boxes\n\n\nPhysical Servers \n\n\nDocker.\n\n\n\n\nGalaxyKickStart has been developed at the \nARTbio platform\n and contains roles developed\nby the \nGalaxy team\n.\n\n\nList of roles included in this playbook\n\n\nansible-postgresql-objects\n\n\ngalaxy-extras role\n\n\ngalaxy-tools role\n\n\ngalaxy-os role\n\n\ngalaxy role", 
+            "text": "GalaxyKickStart\n\n\nGalaxyKickStart is an Ansible playbook designed to help you get one or more production-ready\n \nGalaxy servers\n based on Ubuntu within minutes, and to maintain these servers.\n\n\nRequired ansible version \n=2.1\n\n\nOptionally, instances can be pre-loaded with tools and workflows.\n\n\nThe playbook has been tested on \n\n\n\n\nCloud Machines\n\n\nVagrant Boxes\n\n\nPhysical Servers \n\n\nDocker.\n\n\n\n\nGalaxyKickStart has been developed at the \nARTbio platform\n and contains roles developed\nby the \nGalaxy team\n.\n\n\nList of roles included in this playbook\n\n\nansible-postgresql-objects\n\n\ngalaxy-extras role\n\n\ngalaxy-tools role\n\n\ngalaxy-os role\n\n\ngalaxy role", 
             "title": "What is GalaxyKickStart"
         }, 
         {
             "location": "/about/#galaxykickstart", 
-            "text": "GalaxyKickStart is an Ansible playbook designed to help you get one or more production-ready\n  Galaxy servers  based on Ubuntu within minutes, and to maintain these servers.  Optionally, instances can be pre-loaded with tools and workflows.  The playbook has been tested on    Cloud Machines  Vagrant Boxes  Physical Servers   Docker.   GalaxyKickStart has been developed at the  ARTbio platform  and contains roles developed\nby the  Galaxy team .", 
+            "text": "GalaxyKickStart is an Ansible playbook designed to help you get one or more production-ready\n  Galaxy servers  based on Ubuntu within minutes, and to maintain these servers.", 
             "title": "GalaxyKickStart"
+        }, 
+        {
+            "location": "/about/#required-ansible-version-21", 
+            "text": "Optionally, instances can be pre-loaded with tools and workflows.  The playbook has been tested on    Cloud Machines  Vagrant Boxes  Physical Servers   Docker.   GalaxyKickStart has been developed at the  ARTbio platform  and contains roles developed\nby the  Galaxy team .", 
+            "title": "Required ansible version &gt;=2.1"
         }, 
         {
             "location": "/about/#list-of-roles-included-in-this-playbook", 
@@ -27,12 +32,12 @@
         }, 
         {
             "location": "/getting_started/", 
-            "text": "Getting Started\n\n\nGetting the playbook\n\n\nGalaxyKickStart is hosted on \ngithub\n and makes use of submodules, so care\nneeds to be taken to also download the submodules. Cloning the repository for the first time can be done like this\n(note the \n--recursive\n):\n\n\ngit clone --recursive https://github.com/ARTbio/ansible-artimed.git\n\n\n\n\nThe playbook (here \ngalaxy.yml\n) should be in the ansible-artimed folder.\n\n\nls ansible-artimed/\nCONTRIBUTORS.md  docs  extra-files  galaxy.yml  group_vars  hosts\nLICENSE.txt  mkdocs.yml  pre-commit.sh  README.md  roles  Vagrantfile\n\n\n\n\nDeploying galaxy-kickstart on remote machines.\n\n\n\n\nInside the repository you will find a hosts file.\nThis is an example inventory.\n\n\n[artimed]\nlocalhost ansible_ssh_user=\nroot\n ansible_ssh_private_key_file=\n~/.ssh/id_rsa\n\n...\n\n\n\n\nHere \n[artimed]\n is a group, that contains a machine called localhost.\nThe variables defined in \ngroup_vars/artimed\n will be applied to this host.\nAnsible will connect by ssh to this machine, using the ssh key in \n~/.ssh/id_rsa\n.\n\n\nIf you would like to run this playbook on a remote machine by ssh (currently needs to be a debian-type machine),\ncreate a new inventory, and change \nlocalhost\n to the IP address of that machine.\n\nansible_ssh_user=\nuser\n controls under which username to connect to this machine.\nThis user needs to have sudo rights.\n\n\nThen, run the plabook by typing:\n\n\nansible-playbook --inventory-file inventory_files/\nyour_inventory_file\n galaxy.yml\n\n\n\n\nYou can put multiple machines in your inventory.\nIf you run the playbook a second time, the process will be much faster, since steps that have already been executed will be skipped.\nWhenever you change a variable (see \ncustomizations\n), you need to run the playbook again.", 
+            "text": "Getting Started\n\n\nMake sure that you have a recent version of ansible installed.\nThe playbook has been tested with version 2.1.\n\n\nGetting the playbook\n\n\nGalaxyKickStart is hosted on \ngithub\n and makes use of submodules, so care\nneeds to be taken to also download the submodules. Cloning the repository for the first time can be done like this\n(note the \n--recursive\n):\n\n\ngit clone --recursive https://github.com/ARTbio/ansible-artimed.git\n\n\n\n\nThe playbook (here \ngalaxy.yml\n) should be in the ansible-artimed folder.\n\n\nls ansible-artimed/\nCONTRIBUTORS.md  docs  extra-files  galaxy.yml  group_vars  hosts\nLICENSE.txt  mkdocs.yml  pre-commit.sh  README.md  roles  Vagrantfile\n\n\n\n\nDeploying galaxy-kickstart on remote machines.\n\n\n\n\nInside the repository you will find a hosts file.\nThis is an example inventory.\n\n\n[artimed]\nlocalhost ansible_ssh_user=\nroot\n ansible_ssh_private_key_file=\n~/.ssh/id_rsa\n\n...\n\n\n\n\nHere \n[artimed]\n is a group, that contains a machine called localhost.\nThe variables defined in \ngroup_vars/artimed\n will be applied to this host.\nAnsible will connect by ssh to this machine, using the ssh key in \n~/.ssh/id_rsa\n.\n\n\nIf you would like to run this playbook on a remote machine by ssh (currently needs to be a debian-type machine),\ncreate a new inventory, and change \nlocalhost\n to the IP address of that machine.\n\nansible_ssh_user=\nuser\n controls under which username to connect to this machine.\nThis user needs to have sudo rights.\n\n\nThen, run the plabook by typing:\n\n\nansible-playbook --inventory-file inventory_files/\nyour_inventory_file\n galaxy.yml\n\n\n\n\nYou can put multiple machines in your inventory.\nIf you run the playbook a second time, the process will be much faster, since steps that have already been executed will be skipped.\nWhenever you change a variable (see \ncustomizations\n), you need to run the playbook again.", 
             "title": "Getting started"
         }, 
         {
             "location": "/getting_started/#getting-started", 
-            "text": "", 
+            "text": "Make sure that you have a recent version of ansible installed.\nThe playbook has been tested with version 2.1.", 
             "title": "Getting Started"
         }, 
         {
@@ -157,8 +162,13 @@
         }, 
         {
             "location": "/faq/", 
-            "text": "What is the username and password of the galaxy admin account ?\n\n\nUsername and password of the galaxy account are controlled by the variables \ngalaxy_admin\n and \ngalaxy_admin_pw\n and\ndefault to \nadmin@galaxy.org\n and \nadmin\n (Defaults are defined in group_vars/all). This should be changed in the group or host variables for the host you are working on.\nIf you have a host in the \nmygroup\n group, you can edit group_vars/my_group and set\n\n\ngalaxy_admin: new_admin@email.com\ngalaxy_admin_pw: new_password\n\n\n\n\nAs with each change, run the playbook again.", 
+            "text": "Why does the playbook fail?\n\n\nMake sure that you are on ansible version \n=2.1.\nYou can check your ansible version by typing:\n\n\nansible --version\n\n\n\n\nWhat is the username and password of the galaxy admin account ?\n\n\nUsername and password of the galaxy account are controlled by the variables \ngalaxy_admin\n and \ngalaxy_admin_pw\n and\ndefault to \nadmin@galaxy.org\n and \nadmin\n (Defaults are defined in group_vars/all). This should be changed in the group or host variables for the host you are working on.\nIf you have a host in the \nmygroup\n group, you can edit group_vars/my_group and set\n\n\ngalaxy_admin: new_admin@email.com\ngalaxy_admin_pw: new_password\n\n\n\n\nAs with each change, run the playbook again.", 
             "title": "Frequently asked questions"
+        }, 
+        {
+            "location": "/faq/#why-does-the-playbook-fail", 
+            "text": "Make sure that you are on ansible version  =2.1.\nYou can check your ansible version by typing:  ansible --version", 
+            "title": "Why does the playbook fail?"
         }, 
         {
             "location": "/faq/#what-is-the-username-and-password-of-the-galaxy-admin-account", 
