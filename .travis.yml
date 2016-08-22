@@ -7,7 +7,7 @@ dist: trusty
 env:
   global:
     - TOX_ENV=py27
-    - SITE_URL="https://artbio.github.io/ansible-artimed/"
+    - SITE_URL="https://artbio.github.io/ansible-artimed/" # should be changed with a grep to GalaxyKickStart
     - GH_USER_NAME="Marius van den Beek"
     - GH_USER_EMAIL="m.vandenbeek@gmail.com"
     - GH_REF="github.com/ARTbio/ansible-artimed.git"
@@ -29,11 +29,12 @@ before_install:
   - sudo useradd -u $GALAXY_UID -r -g $GALAXY_TRAVIS_USER -d $GALAXY_HOME -p travis_testing -c "Galaxy user" $GALAXY_TRAVIS_USER
   - sudo mkdir $GALAXY_HOME
   - sudo chown -R $GALAXY_TRAVIS_USER:$GALAXY_TRAVIS_USER $GALAXY_HOME
-  - docker build -t galaxy_kickstart .
+  - docker build -t galaxy_kickstart .  # build an image tagged "galaxy_kickstart" in the current directory git clone using the Dockerfile (dockerfiles/galaxy-kickstart/Dockerfile)
   - sudo mkdir /export && sudo chown $GALAXY_UID:$GALAXY_GID /export
   - sudo mkdir /export2 && sudo chown $GALAXY_UID:$GALAXY_GID /export2
+  # two containers are launched with different settings below
   - CID1=`docker run -d --privileged=true -p 8181:80 -e NAT_MASQUERADE=true -e NGINX_GALAXY_LOCATION=/subdir -v /export2:/export galaxy_kickstart`
-  - |
+  - |  # means that it will be on multiple lines
     CID2=`docker run -d -p 8080:80 -p 8021:21 -p 8800:8800 \
     --privileged=true \
     -e GALAXY_CONFIG_ALLOW_USER_DATASET_PURGE=True \
@@ -45,13 +46,13 @@ before_install:
     galaxy_kickstart`
   - docker ps
   - cd $GALAXY_HOME
-  - sudo su $GALAXY_TRAVIS_USER -c 'wget https://github.com/bgruening/bioblend/archive/master.tar.gz'
+  - sudo su $GALAXY_TRAVIS_USER -c 'wget https://github.com/bgruening/bioblend/archive/master.tar.gz'  # in empty GALAXY_HOME, fetch bioblend
   - sudo su $GALAXY_TRAVIS_USER -c 'tar xfz master.tar.gz'
 
 install:
   - cd $GALAXY_HOME/bioblend-master
-  - sudo su $GALAXY_TRAVIS_USER -c 'pip install --user --upgrade "tox>=1.8.0" "pep8<=1.6.2" '
-  - sudo su $GALAXY_TRAVIS_USER -c 'python setup.py install --user'
+  - sudo su $GALAXY_TRAVIS_USER -c 'pip install --user --upgrade "tox>=1.8.0" "pep8<=1.6.2" '  # install tox and pep8 (synthax style guide)
+  - sudo su $GALAXY_TRAVIS_USER -c 'python setup.py install --user'  # install bioblend
   # remove flake8 testing for bioblend from tox
   - sudo su $GALAXY_TRAVIS_USER -c 'sed -i.bak "s/commands.*$/commands =/" tox.ini'
 
@@ -59,13 +60,13 @@ script:
   - docker logs $CID2
   - sleep 30s
   # Test that galaxy served at subdir responds
-  - curl http://localhost:8181/subdir/api/version| grep version_major
+  - curl http://localhost:8181/subdir/api/version| grep version_major  # test if Galaxy server is responding to http requests
   # Run bioblend nosetests with the same UID and GID as the galaxy user inside if Docker
   # this will guarantee that exchanged files bewteen bioblend and Docker are read & writable from both sides
-  - sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH && cd $GALAXY_HOME/bioblend-master && tox -e $TOX_ENV -- -e 'test_download_dataset'"
+  - sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH && cd $GALAXY_HOME/bioblend-master && tox -e $TOX_ENV -- -e 'test_download_dataset'"  # tox.ini in the bioblend dir defines the tests
   - curl --fail $BIOBLEND_GALAXY_URL/api/version
-  - time > $HOME/time.txt && curl --fail -T $HOME/time.txt ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
-  - curl --fail ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
+  - time > $HOME/time.txt && curl --fail -T $HOME/time.txt ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD  # test FTP
+  - curl --fail ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD  # and check that the file is actually there
   # test that proftpd is running when nat_masquerade=true
   - docker exec -it $CID1 supervisorctl status | grep proftpd | grep RUNNING
   - docker stop $CID1 $CID2 && docker rm $CID1 $CID2
