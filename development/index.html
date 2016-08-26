@@ -276,8 +276,8 @@ In a development cycle it may occur that the url of a repo changes, or that we h
 If at any point you find yourself in the situation where a git checkout of submodules does not work, you can follow this procedure: 
 (galaxyprojectdotorg.galaxy-extras as an example, replace this with the problematic role)</p>
 <p>Skip the git clone if you already cloned the repo.</p>
-<pre><code>git clone --recursive https://github.com/ARTbio/ansible-artimed.git
-cd ansible-artimed/
+<pre><code>git clone --recursive https://github.com/ARTbio/GalaxyKickStart.git
+cd GalaxyKickStart/
 </code></pre>
 
 <p>Enter the directory of the problematic submodule</p>
@@ -285,11 +285,11 @@ cd ansible-artimed/
 </code></pre>
 
 <p>Verify that you have the correct remote.
-You can find the correct remote in ansible-artimed/.gitmodules</p>
+You can find the correct remote in GalaxyKickStart/.gitmodules</p>
 <pre><code>git remote -v
 </code></pre>
 
-<p>If this is not the correct remote, change back to the ansible-artimed directory and do</p>
+<p>If this is not the correct remote, change back to the GalaxyKickStart directory and do</p>
 <pre><code>git submodule sync
 </code></pre>
 
@@ -305,7 +305,7 @@ You can find the correct remote in ansible-artimed/.gitmodules</p>
 git add galaxyprojectdotorg.galaxy-extras
 git commit -m "Fix galaxy-extras submodule revision"
 ```</p>
-<p>If you push this work back to github and you compare your repo with ansible-artimed/master, you should not see any changes
+<p>If you push this work back to github and you compare your repo with GalaxyKickStart/master, you should not see any changes
 that look like <code>Subproject commit 8265bdceaf0eca5ea4daeda06eb0d28583754ef6</code> (unless you have intentionally updated a submodule).</p>
               
             </div>
