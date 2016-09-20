@@ -1,4 +1,12 @@
 tools:
+- name: msp_sr_readmap_and_size_histograms
+  owner: drosofff
+  revisions:
+  - be0c6b6466cc
+  tool_panel_section_label: Metavisitor
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+  install_tool_dependencies: False
 - name: blast_to_scaffold
   owner: drosofff
   revisions:
@@ -11,6 +19,8 @@ tools:
   - a9d4f71dbfb0
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+  install_tool_dependencies: False
 - name: cherry_pick_fasta
   owner: drosofff
   revisions:
@@ -29,16 +39,20 @@ tools:
   - e87aeff2cf88
   tool_panel_section_label: null
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+  install_tool_dependencies: False
 - name: data_manager_bowtie_index_builder
   owner: iuc
   revisions:
-  - 0a0c648498e2
+  - 086edfff112b
   tool_panel_section_label: null
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+  install_tool_dependencies: False
 - name: data_manager_fetch_genome_dbkeys_all_fasta
   owner: devteam
   revisions:
-  - 776bb1b478a0
+  - 86fa71e9b427
   tool_panel_section_label: null
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: fasta_filter_by_length
@@ -59,6 +73,7 @@ tools:
   - 377ac2829eac
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  # Update revision when https://github.com/galaxyproject/tools-devteam/pull/375 goes live
 - name: fetch_fasta_from_ncbi
   owner: drosofff
   revisions:
@@ -71,6 +86,8 @@ tools:
   - 6d8793a4923d
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+  install_tool_dependencies: False
 - name: msp_blastparser_and_hits
   owner: drosofff
   revisions:
@@ -98,15 +115,11 @@ tools:
 - name: msp_sr_bowtie
   owner: drosofff
   revisions:
-  - c1bfa227bbb6
+  - 68b71bd388eb
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: msp_sr_readmap_and_size_histograms
-  owner: drosofff
-  revisions:
-  - 68f58363f1c6
-  tool_panel_section_label: Metavisitor
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+  install_tool_dependencies: False
 - name: ncbi_blast_plus
   owner: devteam
   revisions:
@@ -123,7 +136,7 @@ tools:
 - name: sra_tools
   owner: iuc
   revisions:
-  - b723c120161a
+  - f256cb398262
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: trinityrnaseq
@@ -132,6 +145,26 @@ tools:
   - 0a576a57a9eb
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  # TODO: Use iuc trinity, verify equal or better results
+- name: trinity
+  owner: iuc
+  revisions:
+    - 831abd20e690
+  tool_panel_section_label: Metavisitor
+  install_tool_dependencies: False
+  install_resolver_dependencies: True
+- name: abyss
+  owner: iuc
+  revisions:
+    - f048033da666
+  install_tool_dependencies: False
+  install_resolver_dependencies: True
+- name: spades
+  owner: nml
+  revisions:
+    - 35cb17bd8bf9
+  install_tool_dependencies: False
+  install_resolver_dependencies: True
 - name: yac_clipper
   owner: drosofff
   revisions:
