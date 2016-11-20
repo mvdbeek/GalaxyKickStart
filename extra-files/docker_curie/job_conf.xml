@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<job_conf>
+    <plugins>
+        <plugin id="cli" type="runner" load="galaxy.jobs.runners.cli:ShellJobRunner">
+        </plugin>
+    </plugins>
+    <handlers default="handlers">
+        <handler id="handler0" tags="handlers"/>
+        <handler id="handler1" tags="handlers"/>
+        <handler id="handler2" tags="handlers"/>
+        <handler id="handler3" tags="handlers"/>
+    </handlers>
+    <destinations default="default">
+        <expand macro="cluster" id="default" resource="walltime=0:10:00,nodes=1:ppn=1,mem=4gb"/>
+        <expand macro="cluster" id="hicpu" resource="walltime=2:00:00,nodes=1:ppn=8,mem=32gb"/>
+        <expand macro="cluster" id="himem" resource="walltime=1:00:00,nodes=1:ppn=8,mem=90gb"/>
+    </destinations>
+   <tools>
+        <tool id="tophat2" destination="hicpu"/>
+        <tool id="hisat2" destination="hicpu"/>
+        <tool id="bowtie2" destination="hicpu"/>
+        <tool id="bowtieForSmallRNA" destination="hicpu"/>
+        <tool id="run_TEMP" destination="himem"/>
+        <tool id="bwa_mem" destination="hicpu"/>
+        <tool id="breakdancer_max" destination="hicpu"/>
+        <tool id="fastuniq" destination="himem"/>
+        <tool id="printenv" destination="hicpu"/>
+   </tools>
+    <limits>
+        <limit type="destination_total_concurrent_jobs" id="default">40</limit>
+        <limit type="destination_total_concurrent_jobs" id="hicpu">20</limit>
+        <limit type="destination_total_concurrent_jobs" id="himem">20</limit>
+    </limits>
+   <macros>
+        <xml name="cluster" tokens="id,resource">
+            <destination id="@ID@" runner="cli">
+                <param id="shell_plugin">SecureShell</param>
+                <param id="job_plugin">Torque</param>
+                <param id="shell_username">mvandenb</param>
+                <param id="shell_hostname">bi-calc00.curie.fr</param>
+                <param id="job_Resource_List">@RESOURCE@</param>
+                <param id="remote_metadata">true</param>
+                <env file="{{ galaxy_server_dir }}/.venv/bin/activate" />
+            <param id="embed_metadata_in_job">true</param>
+            </destination>
+        </xml>
+    </macros>
+</job_conf>

@@ -3,6 +3,12 @@
 # then source this file (to get both user-specified and default environemntal variables)
 # and run ansible to adjust runtime settings. The argument to startup.sh is the location of
 # the inventory file to be used
+CUSTOM_STARTUP=/custom_startup.sh
+if [ -e /custom_startup.sh ]
+then
+  source /custom_startup.sh
+fi
+
 printenv >> /etc/default/supervisor && source /etc/default/supervisor && \
            ansible-playbook galaxy.yml -c local \
            --tags "persists_galaxy,nginx_config,galaxy_config_files,galaxy_extras_job_conf" --skip-tags=skip_supervisor_start_in_docker \

@@ -1,0 +1,89 @@
+galaxy_tools_tool_list_files:
+  - "extra-files/docker/travis_bioblend_tool_list.yml"
+galaxy_git_repo: https://github.com/mvdbeek/galaxy.git
+galaxy_changeset_id: curie
+galaxy_base_dir: /bioinfo/guests/mvandenb/gx
+galaxy_server_dir: "/bioinfo/guests/mvandenb/galaxy"
+galaxy_config_dir: "{{ galaxy_base_dir }}/config"
+galaxy_shed_tools_dir: "{{ galaxy_base_dir }}/shed_tools"
+job_working_directory: /data/kdi_prod/.kdi/project_tmp_0/1013/acl/01.00/jwd
+galaxy_extras_config_slurm: False
+miniconda_prefix: "{{ galaxy_base_dir }}/s/_c"
+galaxy_mutable_config_dir: "{{ galaxy_config_dir }}"
+storage_dir: /data/kdi_prod/project_result/1013/01.00/data/gx
+tool_data_dir: "{{ storage_dir }}/tool-data"
+shed_tools_dir: "{{ galaxy_base_dir  }}/shed_tools"
+tool_dependency_dir: "{{ galaxy_base_dir }}/tool_dependencies"
+nginx_upload_store_path: "{{ job_working_directory }}/nginx"
+galaxy_job_conf_path: "{{ galaxy_config_dir }}/job_conf.xml"
+galaxy_job_metrics_conf_path: "{{ galaxy_config_dir }}/job_metrics_conf.xml"
+galaxy_config:
+  "app:main":
+    "paste.app_factory": "galaxy.web.buildapp:app_factory"
+    database_connection: "{{ galaxy_db }}"
+    auth_config_file: "{{ galaxy_config_dir  }}/auth_conf.xml.sample"
+    builds_file_path: "{{ galaxy_server_dir }}/tool-data/shared/ucsc/builds.txt.sample"
+    data_manager_config_file: "{{ galaxy_config_dir }}/data_manager_conf.xml.sample"
+    datatypes_config_file: "{{ galaxy_config_dir }}/datatypes_conf.xml.sample"
+    external_service_type_config_file: "{{ galaxy_config_dir }}/external_service_types_conf.xml.sample"
+    integrated_tool_panel_config: "{{ galaxy_mutable_config_dir }}/integrated_tool_panel.xml"
+    migrated_tools_config: "{{ galaxy_mutable_config_dir }}/migrated_tools_conf.xml"
+    openid_config_file: "{{ galaxy_config_dir }}/openid_conf.xml.sample"
+    shed_data_manager_config_file: "{{ galaxy_mutable_config_dir }}/shed_data_manager_conf.xml"
+    shed_tool_data_table_config: "{{ galaxy_mutable_config_dir }}/shed_tool_data_table_conf.xml"
+    tool_config_file: "{{ galaxy_config_dir }}/tool_conf.xml.sample,{{ galaxy_shed_tool_conf_file }}"
+    tool_data_table_config_path: "{{ galaxy_config_dir }}/tool_data_table_conf.xml.sample"
+    tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
+    job_config_file: "{{ galaxy_config_dir }}/job_conf.xml"
+    nginx_upload_store: "{{ nginx_upload_store_path }}"
+    ucsc_build_sites: "{{ galaxy_server_dir }}/tool-data/shared/ucsc/ucsc_build_sites.txt.sample"
+    visualization_plugins_directory: "{{ galaxy_config_dir }}/plugins/visualizations"
+    retry_job_output_collection: 30
+    ftp_upload_dir: "{{ storage_dir }}/library"
+    ftp_upload_purge: False
+    library_import_dir: "{{ storage_dir }}/library"
+    file_path: "{{ storage_dir }}/files"
+    new_file_path: "{{ job_working_directory }}"
+    job_working_directory: "{{ job_working_directory }}"
+    use_cached_dependency_manager: True
+    tool_dependency_cache_dir: "{{ galaxy_base_dir }}/s/_cache"
+    job_script_directory: "{{ galaxy_base_dir }}/s/jsd"
+    check_job_script_integrity: False
+    tool_dependency_dir: "{{ tool_dependency_dir }}"
+    conda_prefix: "{{ miniconda_prefix }}"
+    template_cache_path: "{{ galaxy_mutable_data_dir }}/template_cache"
+    whoosh_index_dir: "{{ galaxy_mutable_data_dir }}/whoosh_cache"
+    object_store_cache_path: "{{ galaxy_mutable_data_dir }}/object_store_cache"
+    openid_consumer_cache_path: "{{ galaxy_mutable_data_dir }}/openid_consumer_cache"
+    citation_cache_data_dir: "{{ galaxy_mutable_data_dir }}/citations/data"
+    citation_cache_lock_dir: "{{ galaxy_mutable_data_dir }}/citations/locks"
+
+additional_files_list:
+  - { src: "extra-files/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
+  - { src: "extra-files/docker_curie/custom_startup.sh", dest: /custom_startup.sh }
+additional_templates_list:
+  - { src: "extra-files/docker_curie/job_conf.xml", dest: "{{ galaxy_config_dir }}" }
+galaxy_persist_directories:
+  - { path: "{{ supervisor_postgres_database_path }}", owner: "postgres" }
+supervisor_env_vars:
+    - export IP_ADDRESS=`u934-bdd-4-70-6580.curie.fr`
+    - export MASQUERADE_ADDRESS=$IP_ADDRESS
+    - export GALAXY_GID="{{ galaxy_user_gid }}"
+    - export GALAXY_UID="{{ galaxy_user_uid }}"
+    - export NATIVE_SPEC="--ntasks=`/usr/bin/nproc` --share"
+    - export NGINX_GALAXY_LOCATION="{{ nginx_galaxy_location }}"
+    - export GALAXY_CONFIG_FTP_UPLOAD_SITE="ftp://$IP_ADDRESS"
+    - export GALAXY_CONFIG_NGINX_X_ACCEL_REDIRECT_BASE="$NGINX_GALAXY_LOCATION/_x_accel_redirect"
+    - export GALAXY_CONFIG_NGINX_X_ARCHIVE_FILES_BASE="$NGINX_GALAXY_LOCATION/_x_accel_redirect"
+    - export GALAXY_CONFIG_NGINX_UPLOAD_PATH="$NGINX_GALAXY_LOCATION/_upload"
+    - export GALAXY_CONFIG_CONDA_AUTO_INIT="False"
+galaxy_web_processes: 2
+galaxy_handler_processes: 4
+galaxy_user_uid: 5469
+galaxy_user_gid: 30
+postgres_user_uid: 1550
+postgres_user_gid: 1550
+install_apparmor: false
+supervisor_postgres_database_path: /var/lib/postgresql/9.3/main
+supervisor_postgres_database_config: /etc/postgresql/9.3/main/postgresql.conf
+supervisor_postgres_options: "-D {{ supervisor_postgres_database_path }} -c \"config_file={{ supervisor_postgres_database_config }}\""

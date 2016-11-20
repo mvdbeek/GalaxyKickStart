@@ -7,6 +7,7 @@ galaxy_user_gid: 1450
 galaxy_user_uid: 1450
 postgres_user_uid: 1550
 postgres_user_gid: 1550
+galaxy_base_dir: /home/{{ galaxy_user_name }}/
 galaxy_server_dir: /home/{{ galaxy_user_name }}/{{ galaxy_user_name }}
 galaxy_venv_dir: "{{ galaxy_server_dir }}/.venv"
 galaxy_data: /home/{{ galaxy_user_name }}/{{ galaxy_user_name }}
@@ -26,8 +27,9 @@ supervisor_postgres_database_path: /etc/postgresql/{{ postgresql_version }}/main
 apt_package_state: present
 galaxy_extras_apt_package_state: present
 tool_dependency_dir: /home/{{ galaxy_user_name }}/tool_dependencies
-shed_tools_dir: "{{ galaxy_server_dir }}/../shed_tools"
+shed_tools_dir: "{{ galaxy_base_dir }}/shed_tools"
 tool_data_dir: "{{ galaxy_server_dir  }}/tool-data"
+galaxy_pip_version: 9.0.1
 miniconda_python: 2
 miniconda_version: "3.19.0"
 miniconda_installer_checksum: ""

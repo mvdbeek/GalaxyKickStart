@@ -11,6 +11,11 @@
 
     - set_fact:
         banner_img: "{% if 'jetstream' in group_names %}jetstream_text.png{% else %}gce_text.png{% endif %}"
+    - name: Create required directories
+      file: path="{{ item }}" state=directory owner={{ galaxy_user_uid }} group={{ galaxy_user_gid }} recurse=yes
+      with_items:
+        - "{{ galaxy_base_dir  }}"
+        - "{{ galaxy_server_dir }}"
 
   roles:
 
@@ -50,7 +55,7 @@
       become_user: "{{ galaxy_user_name }}"
       tags:
         - configure_galaxy
-        - install_galaxy
+        - configure_trackster
 
     - role: set_supervisor_env_vars
       tags: env_vars
@@ -76,6 +81,7 @@
 
     - role: galaxyprojectdotorg.trackster
       tags: configure_galaxy
+      when: cloud_setup is defined
 
     - role: galaxyprojectdotorg.galaxy-tools
       become: yes
@@ -83,6 +89,7 @@
       tags: install_tools
 
   post_tasks:
+
     - name: Clean apt cache to recover some disk space
       shell: apt-get clean
 
